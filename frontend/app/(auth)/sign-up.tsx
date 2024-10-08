@@ -24,7 +24,7 @@ const SingUp = () => {
   });
 
   const onSignUpPress = async () => {
-    router.replace("/(auth)/email-verify");
+    router.replace("/(profile)/more-info");
   };
 
   const onPressVerify = async () => {};

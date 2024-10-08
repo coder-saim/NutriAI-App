@@ -30,6 +30,7 @@ import onboarding1 from "@/assets/images/onboarding1.png";
 import onboarding2 from "@/assets/images/onboarding2.png";
 import onboarding3 from "@/assets/images/onboarding3.png";
 import signIn from "@/assets/images/signin.png"
+import moreinfo from "@/assets/images/moreinfo.png";
 
 export const images = {
   onboarding1,
@@ -38,7 +39,8 @@ export const images = {
   email_verify,
   noResult,
   message,
-  signIn
+  signIn,
+  moreinfo,
 };
 
 export const icons = {
