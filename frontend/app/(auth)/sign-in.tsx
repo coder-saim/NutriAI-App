@@ -1,9 +1,17 @@
 import { Link, router } from "expo-router";
 import { useCallback, useState } from "react";
-import { Alert, Image, ScrollView, Text, View } from "react-native";
+import {
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import { icons, images } from "@/constants";
+import { FontAwesome } from "@expo/vector-icons";
 
 const SignIn = () => {
   const [signIn, setActive] = useState();
@@ -56,6 +64,39 @@ const SignIn = () => {
             onPress={onSignInPress}
             className="mt-6"
           />
+
+          <View className="flex flex-row justify-between mt-2 mx-2">
+            <View className="flex-row items-center mb-2">
+              <TouchableOpacity className="mr-2">
+                <View className="h-4 w-4 border border-gray-400 rounded"></View>
+              </TouchableOpacity>
+              <Text className="text-gray-600">Remember me</Text>
+            </View>
+
+            <TouchableOpacity>
+              <Text className="text-right text-red-500 mb-4">
+                Forgot password?
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Sign in with Social Media */}
+          <View className="flex flex-row justify-between mx-2">
+            <View className="w-32 border-b border-gray-300 my-4"></View>
+            <Text className="text-black pt-2">Or</Text>
+            <View className="w-32 border-b border-gray-300 my-4"></View>
+          </View>
+          <View className="flex-row justify-between w-full mt-4 mb-8">
+            <TouchableOpacity className="flex-1 items-center">
+              <Image source={icons.google} className="w-8 h-8" />
+            </TouchableOpacity>
+            <TouchableOpacity className="flex-1 items-center">
+              <FontAwesome name="facebook" size={30} color="blue" />
+            </TouchableOpacity>
+            <TouchableOpacity className="flex-1 items-center">
+              <FontAwesome name="twitter" size={30} color="black" />
+            </TouchableOpacity>
+          </View>
 
           <Link
             href="/sign-up"

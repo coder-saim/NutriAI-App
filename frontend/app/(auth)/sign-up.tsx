@@ -14,6 +14,7 @@ const SingUp = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     password: "",
   });
   const [verification, setVerification] = useState({
@@ -22,7 +23,9 @@ const SingUp = () => {
     code: "",
   });
 
-  const onSignUpPress = async () => {};
+  const onSignUpPress = async () => {
+    router.replace("/(auth)/email-verify");
+  };
 
   const onPressVerify = async () => {};
 
@@ -45,6 +48,14 @@ const SingUp = () => {
             icon={icons.person}
             value={form.name}
             onChangeText={(value) => setForm({ ...form, name: value })}
+          />
+          <InputField
+            label="Phone"
+            placeholder="Enter phone number"
+            icon={icons.phone}
+            textContentType="telephoneNumber"
+            value={form.phone}
+            onChangeText={(value) => setForm({ ...form, phone: value })}
           />
           <InputField
             label="Email"
