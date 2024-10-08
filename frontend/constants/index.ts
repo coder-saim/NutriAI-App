@@ -21,9 +21,9 @@ import profile from "@/assets/icons/profile.png";
 import search from "@/assets/icons/search.png";
 import selectedMarker from "@/assets/icons/selected-marker.png";
 import star from "@/assets/icons/star.png";
-import target from "@/assets/icons/target.png";
+import phone from "@/assets/icons/phone.png";
 import to from "@/assets/icons/to.png";
-import check from "@/assets/images/check.png";
+import email_verify from "@/assets/images/email_verify.png";
 import message from "@/assets/images/message.png";
 import noResult from "@/assets/images/no-result.png";
 import onboarding1 from "@/assets/images/onboarding1.png";
@@ -35,7 +35,7 @@ export const images = {
   onboarding1,
   onboarding2,
   onboarding3,
-  check,
+  email_verify,
   noResult,
   message,
   signIn
@@ -65,7 +65,7 @@ export const icons = {
   search,
   selectedMarker,
   star,
-  target,
+  phone,
   to,
 };
 
