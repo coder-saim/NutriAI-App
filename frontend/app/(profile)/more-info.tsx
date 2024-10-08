@@ -1,11 +1,16 @@
 import CustomButton from "@/components/CustomButton";
 import { images } from "@/constants";
-import React, { useState, useEffect } from "react";
+import { router } from "expo-router";
+import React from "react";
 import {
   View,
   Image,
   Text,
 } from "react-native";
+
+const onLetsGoPress = async () => {
+  router.replace("/basicInfo1");
+};
 
 export default function MoreInfo() {
   return (
@@ -17,7 +22,7 @@ export default function MoreInfo() {
       <Text className="text-base font-medium text-center text-black mb-20">
         We’ll need a few details from you to create a personalized experience
       </Text>
-      <CustomButton title="Let's go" className="rounded-2xl" />
+      <CustomButton title="Let's go" onPress={onLetsGoPress} className="rounded-2xl" />
     </View>
   );
 }
