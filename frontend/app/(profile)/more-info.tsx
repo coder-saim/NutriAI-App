@@ -14,7 +14,7 @@ const onLetsGoPress = async () => {
 
 export default function MoreInfo() {
   return (
-    <View className="flex-1 justify-center items-center bg-gray-100 px-6">
+    <View className="flex-1 justify-center items-center bg-white px-6">
       <Text className="text-[32px] font-bold text-black mb-8">
         Let's get to know you
       </Text>
