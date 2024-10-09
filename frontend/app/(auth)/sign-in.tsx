@@ -26,6 +26,10 @@ const SignIn = () => {
     router.replace("/(root)/(tabs)/home");
   }, [isLoaded, form]);
 
+  const handleGoogleSignIn = async () => {
+    Alert.alert("Comming Soon!");
+  };
+
   return (
     <ScrollView className="flex-1 bg-white">
       <View className="flex-1 bg-white pt-8">
@@ -73,30 +77,32 @@ const SignIn = () => {
               <Text className="text-gray-600">Remember me</Text>
             </View>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => router.replace("/(auth)/reset-password")}>
               <Text className="text-right text-red-500 mb-4">
                 Forgot password?
               </Text>
             </TouchableOpacity>
           </View>
 
-          {/* Sign in with Social Media */}
           <View className="flex flex-row justify-between mx-2">
             <View className="w-32 border-b border-gray-300 my-4"></View>
             <Text className="text-black pt-2">Or</Text>
             <View className="w-32 border-b border-gray-300 my-4"></View>
           </View>
-          <View className="flex-row justify-between w-full mt-4 mb-8">
-            <TouchableOpacity className="flex-1 items-center">
-              <Image source={icons.google} className="w-8 h-8" />
-            </TouchableOpacity>
-            <TouchableOpacity className="flex-1 items-center">
-              <FontAwesome name="facebook" size={30} color="blue" />
-            </TouchableOpacity>
-            <TouchableOpacity className="flex-1 items-center">
-              <FontAwesome name="twitter" size={30} color="black" />
-            </TouchableOpacity>
-          </View>
+          <CustomButton
+            title="Continue with Google"
+            className="mt-5 w-full shadow-none"
+            IconLeft={() => (
+              <Image
+                source={icons.google}
+                resizeMode="contain"
+                className="w-5 h-5 mx-2"
+              />
+            )}
+            bgVariant="outline"
+            textVariant="primary"
+            onPress={handleGoogleSignIn}
+          />
 
           <Link
             href="/sign-up"
