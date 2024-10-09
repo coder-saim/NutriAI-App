@@ -22,3 +22,12 @@ declare interface InputFieldProps extends TextInputProps {
   iconStyle?: string;
   className?: string;
 }
+
+
+
+interface OtpVerificationProps {
+  email: string; 
+  onVerify: (otp: number) => void; 
+  otpLength?: number; 
+  timerDuration?: number; 
+}

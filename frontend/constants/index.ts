@@ -30,6 +30,8 @@ import onboarding1 from "@/assets/images/onboarding1.png";
 import onboarding2 from "@/assets/images/onboarding2.png";
 import onboarding3 from "@/assets/images/onboarding3.png";
 import signIn from "@/assets/images/signin.png"
+import resetPassword from "@/assets/images/reset_password.png"
+import resetPasswordnow from "@/assets/images/reset_password_now.png"
 
 export const images = {
   onboarding1,
@@ -38,7 +40,9 @@ export const images = {
   email_verify,
   noResult,
   message,
-  signIn
+  signIn,
+  resetPassword,
+  resetPasswordnow
 };
 
 export const icons = {
