@@ -3,7 +3,8 @@ const Layout = () => {
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack> 
+      <Stack.Screen name="(services)" options={{ headerShown: false }} />
+    </Stack>
   );
 };
 
