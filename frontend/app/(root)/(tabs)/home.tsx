@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 const HomeScreen = () => {
   return (
     <View className="flex-1 bg-gray-100 px-4 py-6">
-      
       <View className="flex-row justify-between items-center">
         <Text className="text-2xl mt-4 font-semibold text-green-700">
           Hello John,
@@ -26,7 +26,7 @@ const HomeScreen = () => {
           <Text className="text-2xl font-bold text-black">6.5</Text>
           <Text className="text-sm text-red-600">1.2 Danger</Text>
         </View>
-        <TouchableOpacity className="bg-green-700 rounded-full py-4 px-4 mt-4">
+        <TouchableOpacity className="bg-[#159339] rounded-full py-4 px-4 mt-4">
           <Text className="text-center text-white font-semibold">
             Track Your Weekly Progress
           </Text>
@@ -37,14 +37,17 @@ const HomeScreen = () => {
         Our Services
       </Text>
       <View className="flex flex-row justify-around bg-green-100 rounded-lg ">
-        <TouchableOpacity className="p-4 items-center">
+        <TouchableOpacity
+          onPress={() => router.push("/(services)/(reminder)/reminder")}
+          className="p-4 items-center"
+        >
           <FontAwesome5 name="clock" size={26} color="green" />
           <Text className="mt-2 text-sm font-semibold text-black">
             Reminder
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="p-4 items-center">
+        <TouchableOpacity onPress={() => router.push("/(services)/tracking-activity")} className="p-4 items-center">
           <FontAwesome5 name="running" size={26} color="green" />
           <Text className="mt-2 text-sm font-semibold text-black">
             Tracking Activity
@@ -59,7 +62,10 @@ const HomeScreen = () => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="p-4 items-center">
+        <TouchableOpacity
+          onPress={() => router.push("/(services)/blood-suger")}
+          className="p-4 items-center"
+        >
           <FontAwesome5 name="heartbeat" size={26} color="green" />
           <Text className="mt-2 text-sm font-semibold text-black">
             Blood Sugar
