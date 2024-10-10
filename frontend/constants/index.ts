@@ -32,6 +32,11 @@ import onboarding3 from "@/assets/images/onboarding3.png";
 import signIn from "@/assets/images/signin.png"
 import resetPassword from "@/assets/images/reset_password.png"
 import resetPasswordnow from "@/assets/images/reset_password_now.png"
+import glucometer from "@/assets/images/glucometer.png"
+import meal from "@/assets/images/meal.png"
+import bell from "@/assets/icons/bell.png";
+import clock from "@/assets/icons/clock.png";
+import calendar from "@/assets/icons/calendar.png";
 
 export const images = {
   onboarding1,
@@ -42,7 +47,9 @@ export const images = {
   message,
   signIn,
   resetPassword,
-  resetPasswordnow
+  resetPasswordnow,
+  glucometer,
+  meal
 };
 
 export const icons = {
@@ -71,6 +78,9 @@ export const icons = {
   star,
   phone,
   to,
+  bell,
+  clock,
+  calendar
 };
 
 export const onboarding = [
