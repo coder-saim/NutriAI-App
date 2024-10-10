@@ -16,14 +16,14 @@ const Radio = ({
 
         return (
           <TouchableOpacity 
-            className={`h-16 w-full flex-row items-center px-4 rounded-2xl mb-6 border-2 ${active ? 'bg-[#D1FADD] border-[#47E275]': 'bg-[#E7F0FE] border-[#B4BAC2]'}`}
-            onPress={() => onChange(option.value)} // Pass the value of the selected option
+            className={`h-16 w-full flex-row items-center px-4 rounded-2xl mb-6 border ${active ? 'bg-[#D1FADD] border-[#159339]': 'border-[#B4BAC2]'}`}
+            onPress={() => onChange(option.value)}
             key={option.value}
           >
             <MaterialIcons
               name={active ? 'radio-button-checked' : 'radio-button-unchecked'}
               size={24}
-              color={active ? '#074191' : '#B4BAC2'}
+              color={active ? '#159339' : '#B4BAC2'}
             />
             <Text className={`text-lg font-bold ml-4 ${active ? 'text-black' : 'text-[#B4BAC2]'}`}>
               {option.label}

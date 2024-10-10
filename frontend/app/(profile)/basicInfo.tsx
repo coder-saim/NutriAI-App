@@ -11,18 +11,28 @@ const BasicInfo = () => {
       <InputField
             label="Age"
             placeholder="Age"
-            className="rounded-lg"
+            containerStyle='h-16 px-4 rounded-2xl mb-2 bg-white border border-[#B4BAC2]'
+            inputStyle='text-lg font-bold text-black'
             keyboardType="numeric"
+          />
+      <InputField
+            label="Gender"
+            placeholder="Gender"
+            containerStyle='h-16 px-4 rounded-2xl mb-2 bg-white border border-[#B4BAC2]'
+            inputStyle='text-lg font-bold text-black'
           />
       <InputField
             label="Height"
             placeholder="Gender"
-            className="rounded-lg"
+            containerStyle='h-16 px-4 rounded-2xl mb-2 bg-white border border-[#B4BAC2]'
+            inputStyle='text-lg font-bold text-black'
+            keyboardType="numeric"
           />
       <InputField
             label="Weight"
             placeholder="Weight"
-            className="rounded-lg"
+            containerStyle='h-16 px-4 rounded-2xl mb-2 bg-white border border-[#B4BAC2]'
+            inputStyle='text-lg font-bold text-black'
             keyboardType="numeric"
           />
     </View>

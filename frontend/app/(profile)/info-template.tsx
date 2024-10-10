@@ -76,7 +76,7 @@ export default function BasicInfo1() {
           <ProgressBar 
             className="rounded-b-full mx-[3px] mb-[0.25px]" 
             progress={page / 4}
-            color={MD3Colors.neutral70}
+            color="#159339"
           />
         </View>
       </TouchableOpacity>
