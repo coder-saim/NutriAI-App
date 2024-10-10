@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 const onLetsGoPress = async () => {
-  router.replace("/basicInfo1");
+  router.replace("/info-template");
 };
 
 export default function MoreInfo() {
