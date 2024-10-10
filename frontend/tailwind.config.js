@@ -78,6 +78,9 @@ module.exports = {
           700: "#EBEBEB",
           800: "#ADADAD",
         },
+        original: {
+          100: "#159339",
+        }
       },
     },
   },

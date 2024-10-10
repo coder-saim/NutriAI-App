@@ -24,6 +24,12 @@ declare interface InputFieldProps extends TextInputProps {
 }
 
 
+declare interface RadioProps {
+  options: Array<{ label: string; value: string}>;
+  checkedValue: string;
+  onChange: (value: string) => void;
+
+
 
 interface OtpVerificationProps {
   email: string; 

@@ -30,6 +30,7 @@ import onboarding1 from "@/assets/images/onboarding1.png";
 import onboarding2 from "@/assets/images/onboarding2.png";
 import onboarding3 from "@/assets/images/onboarding3.png";
 import signIn from "@/assets/images/signin.png"
+import moreinfo from "@/assets/images/moreinfo.png";
 import resetPassword from "@/assets/images/reset_password.png"
 import resetPasswordnow from "@/assets/images/reset_password_now.png"
 import glucometer from "@/assets/images/glucometer.png"
@@ -46,10 +47,12 @@ export const images = {
   noResult,
   message,
   signIn,
+  moreinfo,
   resetPassword,
   resetPasswordnow,
   glucometer,
   meal
+
 };
 
 export const icons = {
