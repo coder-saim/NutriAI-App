@@ -1,5 +1,3 @@
-import CustomButton from "@/components/CustomButton";
-import InputField from "@/components/InputField";
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import React, { useState } from "react";
 import {
@@ -11,7 +9,12 @@ import Radio from "@/components/Radio";
 
 export default function BasicInfo2() {
 
-  const [type, setType] = useState("");
+  const [type, setType] = useState("type1");
+
+
+  const handleTypeChange = (value: string) => {
+    setType(value);
+  };
 
   return (
     <View className="flex-1 pt-6 bg-white px-6">
@@ -26,8 +29,8 @@ export default function BasicInfo2() {
           { label: "Gestational", value: "gestational" },
         ]}
         checkedValue={type}
-        onChange={()=>{setType(type)}}
-        />
+        onChange={handleTypeChange}
+      />
 
       <TouchableOpacity className="rounded-xl border-original-100 mt-auto mb-10 border h-16 justify-end">
         <View className="flex-row justify-between mx-8 mb-4">
