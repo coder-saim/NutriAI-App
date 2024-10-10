@@ -1,23 +1,19 @@
 import OtpVerification from "@/components/OtpVerification";
-import React from "react";
 import { router } from "expo-router";
+import React from "react";
 
-
-
-export default function EmailVerification() {
-
+export default function ResetPasswordVerification() {
   const handleOtpVerify = (otp: number) => {
-    console.log("OTP Verified:", otp); 
-    router.replace("/(auth)/sign-in");
-    // Handle OTP verification logic here
+    console.log("OTP Verified:", otp);
+    router.replace("/(auth)/reset-password-now")
   };
 
   return (
     <OtpVerification
       email="john@gmail.com"
       onVerify={handleOtpVerify}
-      otpLength={6} 
-      timerDuration={30} 
+      otpLength={6}
+      timerDuration={30}
     />
   );
 }

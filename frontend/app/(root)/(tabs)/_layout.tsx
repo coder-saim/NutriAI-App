@@ -1,51 +1,23 @@
 import { Tabs } from "expo-router";
-import { Image, ImageSourcePropType, View } from "react-native";
-import { icons } from "@/constants";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-const TabIcon = ({
-  source,
-  focused,
-}: {
-  source: ImageSourcePropType;
-  focused: boolean;
-}) => (
-  <View
-    className={`flex flex-row justify-center items-center rounded-full ${focused ? "bg-black" : "bg-white"}`}
-  >
-    <View
-      className={`rounded-full w-12 h-12 items-center justify-center ${focused ? "bg-green-700" : ""}`}
-    >
-      <Image
-        source={source}
-        tintColor="white"
-        resizeMode="contain"
-        className="w-7 h-7"
-      />
-    </View>
-  </View>
-);
 
-export default function Layout() {
+export default function TabLayout() {
   return (
     <Tabs
-      initialRouteName="index"
       screenOptions={{
-        tabBarActiveTintColor: "#000000",
-        tabBarInactiveTintColor: "#000000",
-        tabBarShowLabel: false,
+        tabBarActiveTintColor: "green",
+        tabBarInactiveTintColor: "black",
+        tabBarLabelStyle: {
+          fontSize: 14,
+          fontWeight: "600",
+          // marginBottom: 4,
+        },
         tabBarStyle: {
-          backgroundColor: "#ffffff",
-          borderRadius: 0,
-          paddingBottom: 0, // ios only
-          overflow: "hidden",
-          marginHorizontal: 0,
-          marginBottom: 0,
-          height: 78,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
-          position: "absolute",
+          backgroundColor: "white",
+          paddingBottom: 8,
+          paddingTop: 8,
+          height: 65,
         },
       }}
     >
@@ -54,19 +26,18 @@ export default function Layout() {
         options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon source={icons.home} focused={focused} />
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={34} name="home" color={color} />
           ),
         }}
       />
-
       <Tabs.Screen
         name="camera"
         options={{
           title: "Camera",
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon source={icons.camera} focused={focused} />
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={26} name="camera" color={color} />
           ),
         }}
       />
@@ -75,8 +46,8 @@ export default function Layout() {
         options={{
           title: "Profile",
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon source={icons.profile} focused={focused} />
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={30} name="user" color={color} />
           ),
         }}
       />
