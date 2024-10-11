@@ -34,6 +34,7 @@ import moreinfo from "@/assets/images/moreinfo.png";
 import resetPassword from "@/assets/images/reset_password.png"
 import resetPasswordnow from "@/assets/images/reset_password_now.png"
 import glucometer from "@/assets/images/glucometer.png"
+import burger from "@/assets/images/burger.jpg"
 import meal from "@/assets/images/meal.png"
 import bell from "@/assets/icons/bell.png";
 import clock from "@/assets/icons/clock.png";
@@ -51,8 +52,8 @@ export const images = {
   resetPassword,
   resetPasswordnow,
   glucometer,
-  meal
-
+  meal,
+  burger
 };
 
 export const icons = {
