@@ -92,13 +92,12 @@ export default function BasicInfo1() {
 
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1 }} 
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={80}  // Adjust this value if necessary
-    >
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="bg-white">
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      className="flex-1"
+    >    
+      <ScrollView contentContainerStyle={{flexGrow: 1}} className="bg-white">
         <View className="flex-1 pt-6 bg-white px-6">
-          {renderComponent()}      
+          {renderComponent()}
           <TouchableOpacity onPress={handleNext} className="rounded-xl border-original-100 border h-16 justify-end mt-auto mb-8">
             <View className="flex-row justify-between mx-8 mb-4">
               <Text className="text-original-100 text-lg font-bold">Next</Text>
@@ -106,7 +105,7 @@ export default function BasicInfo1() {
             </View>
             <ProgressBar 
               className="rounded-b-full mx-[3px] mb-[0.25px]" 
-              progress={(page - 1) / 6}
+              progress={(page-1) / 6}
               color="#159339"
             />
           </TouchableOpacity>

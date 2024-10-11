@@ -38,6 +38,7 @@ import meal from "@/assets/images/meal.png"
 import bell from "@/assets/icons/bell.png";
 import clock from "@/assets/icons/clock.png";
 import calendar from "@/assets/icons/calendar.png";
+import healthy from "@/assets/images/healthy.png";
 
 export const images = {
   onboarding1,
@@ -51,8 +52,8 @@ export const images = {
   resetPassword,
   resetPasswordnow,
   glucometer,
-  meal
-
+  meal,
+  healthy
 };
 
 export const icons = {

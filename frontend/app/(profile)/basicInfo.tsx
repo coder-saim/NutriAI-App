@@ -23,7 +23,7 @@ const BasicInfo = () => {
           />
       <InputField
             label="Height"
-            placeholder="Gender"
+            placeholder="Height"
             containerStyle='h-16 px-4 rounded-2xl mb-2 bg-white border border-[#B4BAC2]'
             inputStyle='text-lg font-bold text-black'
             keyboardType="numeric"
