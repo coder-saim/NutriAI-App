@@ -51,8 +51,7 @@ const mealData: { [key: string]: Meal[] } = {
 };
 
 const MyMealsPage = () => {
-  let { mealType } = useLocalSearchParams<{ mealType: string }>();
-  if (mealType == null) mealType = "Breakfast";
+  let { mealType = "Breakfast" } = useLocalSearchParams<{ mealType: string }>();
   const [meal_type, setMeal_Type] = useState(mealType);
   const selectedMeals = mealData[meal_type] || [];
 
@@ -67,7 +66,7 @@ const MyMealsPage = () => {
           className="bg-green-100 border border-green-300 px-4 py-2 rounded-md"
         >
           <Text className="text-black text-center font-bold">
-            Suggested Meal
+            Suggested Meals
           </Text>
         </TouchableOpacity>
       </View>
@@ -76,7 +75,9 @@ const MyMealsPage = () => {
         {["Breakfast", "Lunch", "Dinner", "Snacks"].map((meal, index) => (
           <TouchableOpacity onPress={() => setMeal_Type(meal)} key={index}>
             {meal_type === meal ? (
-              <Text className="text-[#159339] font-bold">{meal}</Text>
+              <Text className="text-[#159339] border-b border-[#159339] font-bold">
+                {meal}
+              </Text>
             ) : (
               <Text className="text-black font-bold">{meal}</Text>
             )}
