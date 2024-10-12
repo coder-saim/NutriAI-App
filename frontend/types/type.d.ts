@@ -31,9 +31,18 @@ declare interface RadioProps {
 }
 
 
-interface OtpVerificationProps {
+declare interface OtpVerificationProps {
   email: string; 
   onVerify: (otp: number) => void; 
   otpLength?: number; 
   timerDuration?: number; 
 }
+
+
+declare interface Meal {
+  name: string;
+  protein: string;
+  calories: string;
+  fat: string;
+  carbs: string;
+};
