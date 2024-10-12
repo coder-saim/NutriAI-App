@@ -39,6 +39,12 @@ import bell from "@/assets/icons/bell.png";
 import clock from "@/assets/icons/clock.png";
 import calendar from "@/assets/icons/calendar.png";
 import healthy from "@/assets/images/healthy.png";
+import arrowRight from "@/assets/icons/arrow-right.png";
+import profileGreen from "@/assets/icons/profile-green.png";
+import settings from "@/assets/icons/setting.png";
+import logout from "@/assets/icons/Logout.png";
+import bookmark from "@/assets/icons/paper.png";
+import starGreen from "@/assets/icons/star-green.png";
 
 export const images = {
   onboarding1,
@@ -84,7 +90,13 @@ export const icons = {
   to,
   bell,
   clock,
-  calendar
+  calendar,
+  arrowRight,
+  profileGreen,
+  settings,
+  logout,
+  bookmark,
+  starGreen
 };
 
 export const onboarding = [
