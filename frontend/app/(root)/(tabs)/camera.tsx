@@ -1,22 +1,85 @@
-import { FontAwesome5 } from "@expo/vector-icons";
+import React from "react";
+import { View, Text, Button, Alert, TouchableOpacity } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import * as MediaLibrary from "expo-media-library";
 import { router } from "expo-router";
-import { View, Text, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
-const Chat = () => {
+const CameraScreen = () => {
+  const openImagePicker = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      const asset = await MediaLibrary.createAssetAsync(result.assets[0].uri);
+      router.push({
+        pathname: "/(meal)/scanned-food",
+        params: { imageUri: asset.uri },
+      });
+      // console.log(asset.uri);
+    }
+  };
+
+  const openCamera = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    const mediaLibraryPerm = await MediaLibrary.requestPermissionsAsync();
+
+    if (status === "granted" && mediaLibraryPerm.status === "granted") {
+      const result = await ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+        quality: 1,
+      });
+
+      if (!result.canceled) {
+        const asset = await MediaLibrary.createAssetAsync(result.assets[0].uri);
+        router.push({
+          pathname: "/(meal)/scanned-food",
+          params: { imageUri: asset.uri },
+        });
+        // console.log(asset);
+      }
+    } else {
+      Alert.alert(
+        "Permission Denied",
+        "You need to grant camera and gallery permissions."
+      );
+    }
+  };
+
+  const showPickerOptions = () => {
+    Alert.alert(
+      "Choose an option",
+      "Choose from Gallery or Open Camera",
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: "Open Camera", onPress: openCamera },
+        { text: "Choose from Gallery", onPress: openImagePicker },
+      ],
+      { cancelable: true }
+    );
+  };
+
   return (
-    <SafeAreaView className="">
-      <TouchableOpacity
-        onPress={() => router.push("/(meal)/scan-food")}
-        className="pt-72 items-center"
-      >
-        <FontAwesome5 name="camera" size={32} color="green" />
-        <Text className="mt-2 text-sm font-semibold text-black">
-          Open up Camera
-        </Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <View className="flex-1 justify-center items-center">
+      <Button title="Pick an image" onPress={showPickerOptions} />
+      {["Open Camera", "Choose image from Gallery"].map((buttonType, index) => (
+        <TouchableOpacity
+          key={index}
+          className="bg-[#159339] w-80 py-3 my-2 rounded-full"
+          onPress={() => {
+            index == 0 ? openCamera() : openImagePicker()
+          }}
+        >
+          <Text className="text-white text-center text-lg font-bold">
+            {buttonType}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </View>
   );
 };
 
-export default Chat;
+export default CameraScreen;
