@@ -46,6 +46,9 @@ import logout from "@/assets/icons/Logout.png";
 import bookmark from "@/assets/icons/paper.png";
 import starGreen from "@/assets/icons/star-green.png";
 import tick from "@/assets/icons/tick.png";
+import healthService from "@/assets/images/health-service.png";
+import blackArrow from "@/assets/icons/Black-Arrow.png";
+import faq from "@/assets/images/FAQ.png"
 
 export const images = {
   onboarding1,
@@ -60,7 +63,9 @@ export const images = {
   resetPasswordnow,
   glucometer,
   meal,
-  healthy
+  healthy,
+  healthService,
+  faq
 };
 
 export const icons = {
@@ -98,7 +103,8 @@ export const icons = {
   logout,
   bookmark,
   starGreen,
-  tick
+  tick,
+  blackArrow
 };
 
 export const onboarding = [

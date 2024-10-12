@@ -25,16 +25,16 @@ const Layout = () => {
     },
     {
       id: 4,
-      Name: "Dashboard",
-      image: icons.bookmark,
-      page: "faq"
+      Name: "Help Center",
+      image: icons.logout,
+      page: "help-center"
     },
     {
       id: 5,
-      Name: "Log Out",
-      image: icons.logout,
-      page: "help-center"
-    }
+      Name: "FAQ",
+      image: icons.bookmark,
+      page: "faq"
+    },
   ]
 
   return (
