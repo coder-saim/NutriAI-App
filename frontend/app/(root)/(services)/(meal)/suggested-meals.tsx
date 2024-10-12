@@ -65,7 +65,7 @@ const MyMealsPage = () => {
         </TouchableOpacity>
         <TouchableOpacity className=" bg-[#159339] px-4 py-2 rounded-md">
           <Text className="text-white text-center font-bold">
-            Suggested Meal
+            Suggested Meals
           </Text>
         </TouchableOpacity>
       </View>
@@ -74,7 +74,9 @@ const MyMealsPage = () => {
         {["Breakfast", "Lunch", "Dinner", "Snacks"].map((meal, index) => (
           <TouchableOpacity onPress={() => setMeal_Type(meal)} key={index}>
             {meal_type === meal ? (
-              <Text className="text-[#159339] font-bold">{meal}</Text>
+              <Text className="text-[#159339] border-b border-[#159339] font-bold">
+                {meal}
+              </Text>
             ) : (
               <Text className="text-black font-bold">{meal}</Text>
             )}
