@@ -24,7 +24,8 @@ const SingUp = () => {
   });
 
   const onSignUpPress = async () => {
-    router.replace("/(profile)/more-info");
+    router.replace("/(profile-building)/more-info");
+    // router.replace("/(root)/(tabs)/(profile)/main-profile");
   };
 
   const onPressVerify = async () => {};
