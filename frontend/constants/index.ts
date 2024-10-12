@@ -45,6 +45,7 @@ import settings from "@/assets/icons/setting.png";
 import logout from "@/assets/icons/Logout.png";
 import bookmark from "@/assets/icons/paper.png";
 import starGreen from "@/assets/icons/star-green.png";
+import tick from "@/assets/icons/tick.png";
 
 export const images = {
   onboarding1,
@@ -96,7 +97,8 @@ export const icons = {
   settings,
   logout,
   bookmark,
-  starGreen
+  starGreen,
+  tick
 };
 
 export const onboarding = [
