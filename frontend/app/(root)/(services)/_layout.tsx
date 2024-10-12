@@ -3,6 +3,7 @@ const Layout = () => {
   return (
     <Stack>
       <Stack.Screen name="(reminder)" options={{ headerShown: false }} />
+      <Stack.Screen name="(meal)" options={{ headerShown: false }} />
       <Stack.Screen
         name="blood-suger"
         options={{ headerShown: true, title: "Blood Sugar" }}
