@@ -2,21 +2,19 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { images } from "@/constants";
+import { router } from "expo-router";
 
 const FoodScanResult = () => {
   return (
     <ScrollView className="flex-1 bg-white p-4">
       <View className="flex-row justify-start mb-4">
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/(tabs)/camera")}>
           <Ionicons name="close" size={24} color="black" />
         </TouchableOpacity>
       </View>
 
       <View className="items-center mb-6">
-        <Image
-          source={images.burger}
-          className="w-32 h-32"
-        />
+        <Image source={images.burger} className="w-32 h-32" />
       </View>
 
       <View className="bg-green-100 p-4 rounded-xl mb-6">
@@ -77,14 +75,18 @@ const FoodScanResult = () => {
         </View>
       </View>
 
-      
-        <TouchableOpacity className="bg-[#159339] py-3 my-2 px-6 rounded-full items-center">
-          <Text className="text-white text-lg font-bold">Add to meal</Text>
-        </TouchableOpacity>
-        <TouchableOpacity className="bg-[#159339] py-3 px-6 mb-8 rounded-full items-center">
-          <Text className="text-white text-lg font-bold">Suggested meal</Text>
-        </TouchableOpacity>
-      
+      <TouchableOpacity
+        onPress={() => router.push("/(meal)/add-food")}
+        className="bg-[#159339] py-3 my-2 px-6 rounded-full items-center"
+      >
+        <Text className="text-white text-lg font-bold">Add to meal</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => router.push("/(meal)/suggested-meals")}
+        className="bg-[#159339] py-3 px-6 mb-8 rounded-full items-center"
+      >
+        <Text className="text-white text-lg font-bold">Suggested meal</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
