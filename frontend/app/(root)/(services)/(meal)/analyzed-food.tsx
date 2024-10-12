@@ -4,15 +4,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { images } from "@/constants";
 import { router } from "expo-router";
 
-const FoodScanResult = () => {
+const AnalyzedFoodScreen = () => {
   return (
     <ScrollView className="flex-1 bg-white p-4">
-      <View className="flex-row justify-start mb-4">
-        <TouchableOpacity onPress={() => router.push("/(tabs)/camera")}>
-          <Ionicons name="close" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
-
       <View className="items-center mb-6">
         <Image source={images.burger} className="w-32 h-32" />
       </View>
@@ -91,4 +85,4 @@ const FoodScanResult = () => {
   );
 };
 
-export default FoodScanResult;
+export default AnalyzedFoodScreen;
