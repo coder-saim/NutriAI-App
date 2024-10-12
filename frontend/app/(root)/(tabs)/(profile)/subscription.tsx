@@ -1,7 +1,9 @@
 import { View, Text, ScrollView, Image } from 'react-native'
 import React from 'react'
 import { icons, images } from '@/constants'
-import CustomButton from '@/components/CustomButton'
+import ProfileTabButton from '@/components/ProfileTabButtons'
+import { router } from 'expo-router'
+
 
 const Subscription = () => {
 
@@ -20,6 +22,10 @@ const Subscription = () => {
     }
   ]
 
+  const onBuyPremium = () => {
+    router.replace("/purchase")
+  }
+
   return (
     <ScrollView className="flex-1 bg-white">
       <View className="flex h-full items-center bg-white mx-8">
@@ -37,9 +43,10 @@ const Subscription = () => {
             ))}
           </View>
         </View>
-        <CustomButton
+        <ProfileTabButton
             title="Buy Premium"
             className="mt-8 mx-4 h-20"
+            onPress={onBuyPremium}
           />
       </View>
     </ScrollView>

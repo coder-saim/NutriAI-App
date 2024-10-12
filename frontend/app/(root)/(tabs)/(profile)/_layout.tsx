@@ -23,6 +23,10 @@ const Layout = () => {
         name="subscription"
         options={{ headerShown: true, title: "Subscription" }}
       />
+      <Stack.Screen 
+        name="purchase"
+        options={{ headerShown: true, title: "Subscription" }}
+      />
     </Stack>
   );
 };
