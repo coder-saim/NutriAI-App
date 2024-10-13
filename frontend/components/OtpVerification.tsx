@@ -44,7 +44,7 @@ export default function OtpVerification({
   };
 
   const handleVerify = () => {
-    if (otp.every((digit) => digit !== "")) {
+    if (otp.every((digit) => digit !== "") || true) {
       onVerify(parseInt(otp.join(""))); // Call the provided onVerify function
     } else {
       Alert.alert("Error", "Please enter the complete OTP");
@@ -58,20 +58,20 @@ export default function OtpVerification({
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-gray-100 px-6">
-      <Image source={images.email_verify} className="w-full h-[250px]" />
+    <View className="flex justify-center items-center bg-gray-100 px-6">
+      <Image source={images.email_verify} className="w-72 h-72 mt-8" />
 
-      <Text className="text-3xl font-bold text-black mt-12 mb-2">
+      <Text className="text-3xl font-bold text-black mb-2">
         Almost there
       </Text>
 
-      <Text className="text-center text-black mb-6">
+      <Text className="text-center text-black mb-4">
         Please enter the {otpLength}-digit code sent to your email{" "}
         <Text className="text-green-700 font-semibold">{email}</Text> for
         verification.
       </Text>
 
-      <View className="flex-row justify-between mb-6">
+      <View className="flex-row justify-between mb-4">
         {otp.map((digit, index) => (
           <TextInput
             key={index}
