@@ -19,7 +19,7 @@ const ResetPassword = () => {
   });
 
   const onPressVerify = async () => {
-    router.replace("/(auth)/reset-password-verify");
+    router.push("/(auth)/reset-password-verify");
   };
 
   return (
