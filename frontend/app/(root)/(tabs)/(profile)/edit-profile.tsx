@@ -1,18 +1,37 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { ScrollView } from 'react-native'
-import { images } from '@/constants'
+import { icons, images } from '@/constants'
+import InputField from '@/components/InputField'
 
 const editProfile = () => {
   return (
     <ScrollView className="flex-1 bg-white">
       <View className="flex h-full items-center bg-white">
         <Image source={images.healthy} className="w-52 h-52 mt-2"/>
-        <Text className="text-3xl font-semibold mt-6">John Doe</Text>
-        <Text className="text-base mt-2">You are currently not subscribed!</Text>
-        <View className="mx-4 bg-[#BCF9BC] rounded-2xl">
-
-        </View>
+        <Text className="text-3xl font-semibold mt-4">John Doe</Text>
+        <View className="px-5 w-full">
+          <InputField
+            label="Name"
+            placeholder="Enter your full name"
+            icon={icons.person}
+            labelOn={true}
+          />
+          <InputField
+            label="Email"
+            placeholder="Enter your email"
+            icon={icons.email}
+            textContentType="emailAddress"
+            labelOn={true}
+          />
+          <InputField
+            label="Phone"
+            placeholder="Enter your phone number"
+            icon={icons.phone}
+            textContentType="telephoneNumber"
+            labelOn={true}
+          />
+        </View>      
       </View>
     </ScrollView>
   )
