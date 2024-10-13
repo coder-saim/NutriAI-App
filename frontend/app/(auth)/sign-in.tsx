@@ -77,7 +77,7 @@ const SignIn = () => {
               <Text className="text-gray-600">Remember me</Text>
             </View>
 
-            <TouchableOpacity onPress={() => router.replace("/(auth)/reset-password")}>
+            <TouchableOpacity onPress={() => router.push("/(auth)/reset-password")}>
               <Text className="text-right text-red-500">
                 Forgot password?
               </Text>
