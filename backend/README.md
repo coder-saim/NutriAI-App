@@ -1,4 +1,4 @@
-# Learning-Python-FastAPI
+# NutriAI Backend
 
 To list all the installed package run the command:
 ```bash
