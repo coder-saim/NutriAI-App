@@ -5,7 +5,7 @@ from sqlalchemy.sql.sqltypes import TIMESTAMP
 from .database import Base
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'users' 
     
     id = Column(BigInteger, primary_key=True, index=True)
     type = Column(Text, nullable=False)
