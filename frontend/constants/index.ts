@@ -40,6 +40,17 @@ import meal from "@/assets/images/meal.png"
 import bell from "@/assets/icons/bell.png";
 import clock from "@/assets/icons/clock.png";
 import calendar from "@/assets/icons/calendar.png";
+import healthy from "@/assets/images/healthy.png";
+import arrowRight from "@/assets/icons/arrow-right.png";
+import profileGreen from "@/assets/icons/profile-green.png";
+import settings from "@/assets/icons/setting.png";
+import logout from "@/assets/icons/Logout.png";
+import bookmark from "@/assets/icons/paper.png";
+import starGreen from "@/assets/icons/star-green.png";
+import tick from "@/assets/icons/tick.png";
+import healthService from "@/assets/images/health-service.png";
+import blackArrow from "@/assets/icons/Black-Arrow.png";
+import faq from "@/assets/images/FAQ.png"
 
 export const images = {
   onboarding1,
@@ -54,6 +65,9 @@ export const images = {
   resetPasswordnow,
   glucometer,
   meal,
+  healthy,
+  healthService,
+  faq,
   burger,
   scan
 };
@@ -86,7 +100,15 @@ export const icons = {
   to,
   bell,
   clock,
-  calendar
+  calendar,
+  arrowRight,
+  profileGreen,
+  settings,
+  logout,
+  bookmark,
+  starGreen,
+  tick,
+  blackArrow
 };
 
 export const onboarding = [

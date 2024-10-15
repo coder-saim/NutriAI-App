@@ -11,7 +11,6 @@ export default function TabLayout() {
         tabBarLabelStyle: {
           fontSize: 14,
           fontWeight: "600",
-          // marginBottom: 4,
         },
         tabBarStyle: {
           backgroundColor: "white",
@@ -42,7 +41,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="(profile)"
         options={{
           title: "Profile",
           headerShown: false,

@@ -41,6 +41,7 @@ const SingUp = () => {
             by creating a free account
           </Text>
         </View>
+
         <View className="px-5 py-4">
           <InputField
             label="Name"
