@@ -20,6 +20,10 @@ const Layout = () => {
         options={{ headerShown: true, title: "Settings" }}
       />
       <Stack.Screen 
+        name="shareapp"
+        options={{ headerShown: true, title: "Subscription" }}
+      />
+      <Stack.Screen 
         name="subscription"
         options={{ headerShown: true, title: "Subscription" }}
       />

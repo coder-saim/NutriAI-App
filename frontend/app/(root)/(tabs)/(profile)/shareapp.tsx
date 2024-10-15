@@ -23,7 +23,7 @@ const Subscription = () => {
   ]
 
   const onBuyPremium = () => {
-    router.replace("/purchase")
+    router.replace("/subscription")
   }
 
   return (
@@ -43,12 +43,13 @@ const Subscription = () => {
             ))}
           </View>
         </View>
+        <Text className='text-[#50A950] text-base font-medium my-3'>Share the app and get 50% off</Text>
         <ProfileTabButton
-            title="Buy Premium"
-            className="mt-16 mx-4 h-20"
+            title="Share App"
+            className="mt-3 mx-4 h-20"
             onPress={onBuyPremium}
         />
-        <Text className="font-medium mt-2 text-red-600">Restore Purchase</Text>
+        <Text className="font-medium mt-2 text-red-600">Cancel Subscription</Text>
       </View>
     </ScrollView>
   )

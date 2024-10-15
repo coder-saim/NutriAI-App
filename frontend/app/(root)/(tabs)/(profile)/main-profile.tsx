@@ -15,7 +15,7 @@ const Layout = () => {
       id: 2,
       Name: "Renew Plans",
       image: icons.starGreen,
-      page: "subscription"
+      page: "shareapp"
     },
     {
       id: 3,
