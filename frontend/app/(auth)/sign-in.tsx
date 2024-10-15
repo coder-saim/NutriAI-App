@@ -43,7 +43,7 @@ const SignIn = () => {
           </Text>
         </View>
 
-        <View className="px-5 py-20">
+        <View className="mt-8 px-5 py-20">
           <InputField
             label="Email"
             placeholder="Enter email"

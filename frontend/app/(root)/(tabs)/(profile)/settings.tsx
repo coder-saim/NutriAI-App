@@ -1,6 +1,6 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import React from 'react'
-import { icons, images } from '@/constants'
+import { icons } from '@/constants'
 import SettingsButton from '@/components/SettingsButton'
 
 const Settings = () => {
@@ -29,20 +29,9 @@ const Settings = () => {
       Name: "Notification",
       image: icons.logout,
       toggle: false
-    },
-    {
-      id: 5,
-      Name: "Help Center",
-      image: icons.bookmark,
-      toggle: true
-    },
-    {
-      id: 6,
-      Name: "FAQ",
-      image: icons.bookmark,
-      toggle: true
-    },
+    }
   ]
+
 
   return (
     <ScrollView className="flex-1 bg-white">
