@@ -38,6 +38,7 @@ const CameraScreen = () => {
     if (status === "granted" && mediaLibraryPerm.status === "granted") {
       const result = await ImagePicker.launchCameraAsync({
         allowsEditing: true,
+        aspect: [4, 3],
         quality: 1,
       });
 
