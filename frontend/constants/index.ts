@@ -32,8 +32,10 @@ import onboarding3 from "@/assets/images/onboarding3.png";
 import signIn from "@/assets/images/signin.png"
 import moreinfo from "@/assets/images/moreinfo.png";
 import resetPassword from "@/assets/images/reset_password.png"
+import scan from "@/assets/images/scan.png"
 import resetPasswordnow from "@/assets/images/reset_password_now.png"
 import glucometer from "@/assets/images/glucometer.png"
+import burger from "@/assets/images/burger.jpg"
 import meal from "@/assets/images/meal.png"
 import bell from "@/assets/icons/bell.png";
 import clock from "@/assets/icons/clock.png";
@@ -65,7 +67,9 @@ export const images = {
   meal,
   healthy,
   healthService,
-  faq
+  faq,
+  burger,
+  scan
 };
 
 export const icons = {

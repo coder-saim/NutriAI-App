@@ -31,11 +31,11 @@ const SignIn = () => {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white">
-      <View className="flex-1 bg-white pt-8">
-        <View className="relative w-full h-[250px]">
-          <Image source={images.signIn} className="z-0 w-full h-[250px]" />
-          <Text className="text-3xl text-black font-JakartaSemiBold text-center pt-8">
+    <ScrollView className="flex bg-white">
+      <View className="flex bg-white">
+        <View>
+          <Image source={images.signIn} className="w-72 h-72 ml-8" />
+          <Text className="text-3xl text-black font-JakartaSemiBold text-center">
             Welcome Back 👋
           </Text>
           <Text className="text-md text-slate-500 font-JakartaSemiBold text-center">
@@ -43,7 +43,8 @@ const SignIn = () => {
           </Text>
         </View>
 
-        <View className="mt-8 px-5 py-20">
+
+        <View className="px-5 py-4">
           <InputField
             label="Email"
             placeholder="Enter email"
@@ -66,7 +67,7 @@ const SignIn = () => {
           <CustomButton
             title="Sign In"
             onPress={onSignInPress}
-            className="mt-6"
+            className="mt-2"
           />
 
           <View className="flex flex-row justify-between mt-2 mx-2">
@@ -77,8 +78,8 @@ const SignIn = () => {
               <Text className="text-gray-600">Remember me</Text>
             </View>
 
-            <TouchableOpacity onPress={() => router.replace("/(auth)/reset-password")}>
-              <Text className="text-right text-red-500 mb-4">
+            <TouchableOpacity onPress={() => router.push("/(auth)/reset-password")}>
+              <Text className="text-right text-red-500">
                 Forgot password?
               </Text>
             </TouchableOpacity>
@@ -91,7 +92,7 @@ const SignIn = () => {
           </View>
           <CustomButton
             title="Continue with Google"
-            className="mt-5 w-full shadow-none"
+            className="w-full shadow-none"
             IconLeft={() => (
               <Image
                 source={icons.google}
@@ -106,7 +107,7 @@ const SignIn = () => {
 
           <Link
             href="/sign-up"
-            className="text-lg text-center text-general-200 mt-10"
+            className="text-lg text-center text-general-200 mt-2"
           >
             Don't have an account?{" "}
             <Text className="text-green-700">Sign Up</Text>

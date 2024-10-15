@@ -61,7 +61,7 @@ const ResetPasswordNow = () => {
           <CustomButton
             title="Reset Password"
             onPress={onPressVerify}
-            className="mt-6"
+            className="mt-2"
           />
         </View>
       </View>

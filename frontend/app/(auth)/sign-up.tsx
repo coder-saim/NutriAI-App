@@ -24,24 +24,25 @@ const SingUp = () => {
   });
 
   const onSignUpPress = async () => {
-    router.replace("/(profile-building)/more-info");
+    router.push("/(auth)/email-verify");
   };
 
   const onPressVerify = async () => {};
 
   return (
-    <ScrollView className="flex-1 bg-white">
-      <View className="flex-1 bg-white pt-8">
-        <View className="relative w-full h-[250px]">
-          <Image source={images.signIn} className="z-0 w-full h-[250px]" />
-          <Text className="text-3xl text-black font-JakartaSemiBold pt-8 text-center">
+    <ScrollView className="flex bg-white">
+      <View className="flex bg-white">
+        <View>
+          <Image source={images.signIn} className="w-72 h-72 ml-8" />
+          <Text className="text-3xl text-black font-JakartaSemiBold text-center">
             Get Started Now!
           </Text>
           <Text className="text-md text-slate-500 font-JakartaSemiBold text-center">
             by creating a free account
           </Text>
         </View>
-        <View className="px-5 py-20 mt-8">
+
+        <View className="px-5 py-4">
           <InputField
             label="Name"
             placeholder="Enter name"
@@ -77,11 +78,11 @@ const SingUp = () => {
           <CustomButton
             title="Sign Up"
             onPress={onSignUpPress}
-            className="mt-6"
+            className="mt-2"
           />
           <Link
             href="/sign-in"
-            className="text-lg text-center text-general-200 mt-10"
+            className="text-lg text-center text-general-200 mt-2"
           >
             Already have an account?{" "}
             <Text className="text-green-700">Log In</Text>

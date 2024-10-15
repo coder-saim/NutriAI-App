@@ -29,12 +29,21 @@ declare interface RadioProps {
   options: Array<{ label: string; value: string}>;
   checkedValue: string;
   onChange: (value: string) => void;
+}
 
 
-
-interface OtpVerificationProps {
+declare interface OtpVerificationProps {
   email: string; 
   onVerify: (otp: number) => void; 
   otpLength?: number; 
   timerDuration?: number; 
 }
+
+
+declare interface Meal {
+  name: string;
+  protein: string;
+  calories: string;
+  fat: string;
+  carbs: string;
+};

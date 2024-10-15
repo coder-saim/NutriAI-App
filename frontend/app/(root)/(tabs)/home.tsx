@@ -55,7 +55,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <View className="flex flex-row justify-around bg-green-100 rounded-lg ">
-        <TouchableOpacity className="p-4 items-center">
+        <TouchableOpacity onPress={() => router.push("/(meal)/my-meals")} className="p-4 items-center">
           <FontAwesome5 name="utensils" size={26} color="green" />
           <Text className="mt-2 text-sm font-semibold text-black">
             Meal Planner

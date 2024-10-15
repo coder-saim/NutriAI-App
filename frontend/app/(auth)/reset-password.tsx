@@ -19,25 +19,25 @@ const ResetPassword = () => {
   });
 
   const onPressVerify = async () => {
-    router.replace("/(auth)/reset-password-verify");
+    router.push("/(auth)/reset-password-verify");
   };
 
   return (
     <ScrollView className="flex-1 bg-white">
-      <View className="flex-1 bg-white pt-8">
-        <View className="relative w-full h-[280px]">
+      <View className="flex-1 bg-white mt-8">
+        <View className="">
           <Image
             source={images.resetPassword}
-            className="z-0 w-full h-[280px]"
+            className="w-72 h-72 ml-8"
           />
-          <Text className="text-3xl text-black font-JakartaSemiBold pt-8 text-center">
+          <Text className="text-3xl text-black font-JakartaSemiBold text-center">
             Get Started Now!
           </Text>
           <Text className="text-md text-slate-500 font-JakartaSemiBold text-center">
             reset your password
           </Text>
         </View>
-        <View className="px-5 py-20">
+        <View className="px-5 py-4">
           <InputField
             label="Email"
             placeholder="Enter email"
@@ -50,7 +50,7 @@ const ResetPassword = () => {
           <CustomButton
             title="Reset Password"
             onPress={onPressVerify}
-            className="mt-6"
+            className="mt-2"
           />
         </View>
       </View>
