@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Image, Text, Button, Alert, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  Button,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library";
 import { router } from "expo-router";
@@ -67,7 +74,9 @@ const CameraScreen = () => {
     <View className="flex-1 pb-48 bg-white justify-center items-center">
       <View className="items-center mt-12 mb-8">
         <Image source={images.scan} className="w-64 h-64" />
-        <Text className="text-lg font-bold text-center">Capture an image of your food to analyze the nutritional contents.</Text>
+        <Text className="text-lg font-bold text-center">
+          Capture an image of your food to analyze the nutritional contents.
+        </Text>
       </View>
       {/* <Button title="Pick an image" onPress={showPickerOptions} /> */}
       {["Open Camera", "Choose image from Gallery"].map((buttonType, index) => (
