@@ -8,7 +8,7 @@ class User(Base):
     __tablename__ = 'users' 
     
     id = Column(BigInteger, primary_key=True, index=True)
-    type = Column(Text, nullable=False)
+    type = Column(Text, nullable=True)
     name = Column(Text, nullable=False)
     email = Column(Text, nullable=False)
     password = Column(Text, nullable=False)
@@ -17,8 +17,8 @@ class User(Base):
     weight = Column(Double, nullable=True)
     age = Column(Integer, nullable=True)
     height = Column(Double, nullable=True)
-    diabetes_type_id = Column(BigInteger, ForeignKey("diabetes_type.id", ondelete="CASCADE"), nullable=False)
-    activity_level_id = Column(BigInteger, ForeignKey("activity_level.id", ondelete="CASCADE"), nullable=False)
+    diabetes_type_id = Column(BigInteger, ForeignKey("diabetes_type.id", ondelete="CASCADE"), nullable=True)
+    activity_level_id = Column(BigInteger, ForeignKey("activity_level.id", ondelete="CASCADE"), nullable=True)
     password_reset_tokens = Column(Text, nullable=True)
     failed_login_attempts = Column(TIMESTAMP, nullable=True)
     account_lockouts = Column(Boolean, nullable=True)
@@ -67,7 +67,7 @@ class Meal(Base):
     total_calories = Column(Double, nullable=False)
     created_at = Column(TIMESTAMP, nullable=False)
     
-    user = relationship("User", back_populates="meals")
+    user = relationship("User")
 
 
 class Meal_Recommendation(Base):
