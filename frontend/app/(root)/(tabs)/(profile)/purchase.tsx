@@ -1,6 +1,5 @@
 import { View, Text, ScrollView, Image } from 'react-native'
 import React from 'react'
-import { icons, images } from '@/constants'
 import ProfileTabButton from '@/components/ProfileTabButtons'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 
@@ -44,8 +43,10 @@ const Purchase = () => {
           <Text className="text-xl font-medium text-center mb-2">
             Choose Your Plan
           </Text>
-          <View className="items-center flex-row justify-start w-full mt-3 ml-4">
-            <Image source={icons.tick} className="w-6 h-6" />
+          <View className="items-center flex-row justify-start w-full mt-3 ml-8">
+            <Text>
+              <FontAwesome size={20} name="check" color="green" />
+            </Text>
             <View className="ml-4">
               <Text className="text-base font-medium">
                 Monthly - $7.99/month
@@ -55,8 +56,10 @@ const Purchase = () => {
               </Text>
             </View>
           </View>
-          <View className="items-center flex-row justify-start w-full mt-3 ml-4">
-            <Image source={icons.tick} className="w-6 h-6" />
+          <View className="items-center flex-row justify-start w-full mt-3 ml-8">
+            <Text>
+              <FontAwesome size={20} name="check" color="green" />
+            </Text>
             <View className="ml-4">
               <Text className="text-base font-medium">
                 Yearly - $49.99/month
