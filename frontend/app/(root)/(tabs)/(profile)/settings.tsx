@@ -2,6 +2,7 @@ import { View, ScrollView } from 'react-native'
 import React from 'react'
 import { icons } from '@/constants'
 import SettingsButton from '@/components/SettingsButton'
+import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 const Settings = () => {
 
@@ -9,28 +10,28 @@ const Settings = () => {
     {
       id: 1,
       Name: "Language",
-      image: icons.profileGreen,
-      toggle: true
+      image: <FontAwesome size={26} name="language" color="green" />,
+      toggle: true,
     },
     {
       id: 2,
       Name: "Dark Mode",
-      image: icons.starGreen,
-      toggle: false
+      image: <FontAwesome size={26} name="cloud" color="green" />,
+      toggle: false,
     },
     {
       id: 3,
       Name: "Location",
-      image: icons.settings,
-      toggle: false
+      image: <FontAwesome size={26} name="map" color="green" />,
+      toggle: false,
     },
     {
       id: 4,
       Name: "Notification",
-      image: icons.logout,
-      toggle: false
-    }
-  ]
+      image: <FontAwesome size={26} name="bell" color="green" />,
+      toggle: false,
+    },
+  ];
 
 
   return (
