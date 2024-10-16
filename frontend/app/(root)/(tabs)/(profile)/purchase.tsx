@@ -22,8 +22,8 @@ const Purchase = () => {
 
   return (
     <ScrollView className="flex-1 bg-white">
-      <View className="flex h-full items-center bg-white mx-8">
-        <View className="bg-[#BCF9BC] rounded-2xl mt-6 py-4 w-full">
+      <View className="flex h-full items-center bg-white mx-4">
+        <View className="bg-green-100 rounded-xl mt-6 py-4 w-full">
           <Text className="text-2xl font-semibold text-center">Premium Features</Text>
           <View className="my-2">
             {points.map((item) => (
@@ -34,7 +34,7 @@ const Purchase = () => {
             ))}
           </View>
         </View>
-        <View className="bg-[#CBCBCB] h-[1px] w-3/5 my-6">
+        <View className="bg-[#CBCBCB] h-[1px] w-3/4 my-4">
         </View>
         <View className='w-full'>
             <Text className='text-xl font-medium text-center mb-2'>Choose Your Plan</Text>
@@ -58,10 +58,10 @@ const Purchase = () => {
         </View>
         <ProfileTabButton
             title="Subscribe"
-            className="mx-4 h-20 mt-24"
+            className="mx-4 mt-16"
         />
-        <Text className='mt-2 font-medium'>Subscriptions will be auto renewed.</Text>
-        <Text className='font-medium'>Cancel Anytime. Safe and Secure Payments.</Text>
+        <Text className='mt-2 font-bold'>Subscriptions will be auto renewed.</Text>
+        <Text className='font-bold'>Cancel Anytime. Safe and Secure Payments.</Text>
       </View>
     </ScrollView>
   )
