@@ -1,15 +1,15 @@
-import { View, Text, Image } from 'react-native'
-import React from 'react'
-import { ScrollView } from 'react-native'
-import { icons, images } from '@/constants'
-import InputField from '@/components/InputField'
+import { View, Text, Image } from "react-native";
+import React from "react";
+import { ScrollView } from "react-native";
+import { icons, images } from "@/constants";
+import InputField from "@/components/InputField";
 
 const editProfile = () => {
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView className="flex bg-white">
       <View className="flex h-full items-center bg-white">
-        <Image source={images.healthy} className="w-52 h-52 mt-2"/>
-        <Text className="text-3xl font-semibold mt-4">John Doe</Text>
+        <Image source={images.avatar} className="w-52 h-52 mt-2" />
+        <Text className="text-3xl font-semibold">John Doe</Text>
         <View className="px-5 w-full">
           <InputField
             label="Name"
@@ -31,10 +31,10 @@ const editProfile = () => {
             textContentType="telephoneNumber"
             labelOn={true}
           />
-        </View>      
+        </View>
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-export default editProfile
+export default editProfile;
