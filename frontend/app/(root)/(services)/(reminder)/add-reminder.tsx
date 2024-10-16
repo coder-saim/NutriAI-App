@@ -42,7 +42,7 @@ export default function AddReminder() {
 
   return (
     <View className="flex-1 bg-white">
-      <View className="px-6 py-4">
+      <View className="px-4 py-4">
         <Text className="text-lg font-semibold mb-4">Add Reminder</Text>
 
         <View className="flex-row items-center bg-green-50 p-4 rounded-full mb-4">
