@@ -28,11 +28,11 @@ const Subscription = () => {
 
   return (
     <ScrollView className="flex-1 bg-white">
-      <View className="flex h-full items-center bg-white mx-8">
-        <Image source={images.healthy} className="w-52 h-52 mt-2"/>
-        <Text className="text-3xl font-semibold mt-2">John Doe</Text>
-        <Text className="text-lg mt-1">You are currently not subscribed!</Text>
-        <View className="bg-[#BCF9BC] rounded-2xl mt-4 py-3 w-full">
+      <View className="flex h-full items-center bg-white mx-4">
+        <Image source={images.avatar} className="w-52 h-52 mt-2"/>
+        <Text className="text-3xl font-semibold">John Doe</Text>
+        <Text className="text-lg mt-1">You are currently subscribed!</Text>
+        <View className="bg-green-100 rounded-xl mt-4 py-3 w-full">
           <Text className="text-xl font-semibold text-center">Premium Features</Text>
           <View className="my-2">
             {points.map((item) => (
@@ -46,10 +46,10 @@ const Subscription = () => {
         <Text className='text-[#50A950] text-base font-medium my-3'>Share the app and get 50% off</Text>
         <ProfileTabButton
             title="Share App"
-            className="mt-3 mx-4 h-20"
+            className="mt-3 mx-4"
             onPress={onBuyPremium}
         />
-        <Text className="font-medium mt-2 text-red-600">Cancel Subscription</Text>
+        <Text className="font-bold mt-2 text-red-600">Cancel Subscription</Text>
       </View>
     </ScrollView>
   )
