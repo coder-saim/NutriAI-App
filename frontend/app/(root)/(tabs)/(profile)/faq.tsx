@@ -45,7 +45,7 @@ const FAQ = () => {
           {faqList.map((item) => (
             <View key={item.id} className="border-b border-gray-300 py-4">
               <TouchableOpacity onPress={() => toggleExpand(item.id)} className="flex-row items-center justify-between">
-                <Text className="text-xl font-bold">{item.question}</Text>
+                <Text className="text-lg font-bold">{item.question}</Text>
                 <Image 
                   source={icons.arrowDown} 
                   className={`w-6 h-6 transform ${expandedId === item.id ? 'rotate-180' : 'rotate-0'}`} 
