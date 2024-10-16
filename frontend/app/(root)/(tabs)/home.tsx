@@ -15,7 +15,7 @@ const HomeScreen = () => {
         Find, track and eat healthy food.
       </Text>
 
-      <View className="bg-green-100 rounded-lg p-4 mb-6">
+      <View className="bg-green-50 rounded-lg p-4 mb-6">
         <View className="flex-row justify-between items-center">
           <Text className="text-sm text-green-700 font-semibold">
             Sugar Level
@@ -36,7 +36,7 @@ const HomeScreen = () => {
       <Text className="text-lg font-semibold text-black mb-4">
         Our Services
       </Text>
-      <View className="flex flex-row justify-around bg-green-100 rounded-lg ">
+      <View className="flex flex-row justify-around bg-green-50 rounded-lg ">
         <TouchableOpacity
           onPress={() => router.push("/(services)/(reminder)/reminder")}
           className="p-4 items-center"
@@ -54,7 +54,7 @@ const HomeScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <View className="flex flex-row justify-around bg-green-100 rounded-lg ">
+      <View className="flex flex-row justify-around bg-green-50 rounded-lg ">
         <TouchableOpacity onPress={() => router.push("/(meal)/my-meals")} className="p-4 items-center">
           <FontAwesome5 name="utensils" size={26} color="green" />
           <Text className="mt-2 text-sm font-semibold text-black">
