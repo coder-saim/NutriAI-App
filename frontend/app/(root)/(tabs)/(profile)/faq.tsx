@@ -38,9 +38,9 @@ const FAQ = () => {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView className="flex bg-white">
       <View className="flex h-full items-center bg-white">
-        <Image source={images.faq} className="w-80 h-80 mt-4"/>
+        <Image source={images.faq} className="w-80 h-72"/>
         <View className="w-10/12">
           {faqList.map((item) => (
             <View key={item.id} className="border-b border-gray-300 py-4">
