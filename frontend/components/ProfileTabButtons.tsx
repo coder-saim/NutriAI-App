@@ -49,7 +49,7 @@ const ProfileTabButton = ({
       {...props}
     >
       {IconLeft && <IconLeft />}
-      <Text className={`text-2xl font-bold ${getTextVariantStyle(textVariant)}`}>
+      <Text className={`text-lg font-bold ${getTextVariantStyle(textVariant)}`}>
         {title}
       </Text>
       {IconRight && <IconRight />}
