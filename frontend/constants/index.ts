@@ -51,6 +51,7 @@ import tick from "@/assets/icons/tick.png";
 import healthService from "@/assets/images/health-service.png";
 import blackArrow from "@/assets/icons/Black-Arrow.png";
 import faq from "@/assets/images/FAQ.png"
+import avatar from "@/assets/images/avatar.png"
 
 export const images = {
   onboarding1,
@@ -69,7 +70,8 @@ export const images = {
   healthService,
   faq,
   burger,
-  scan
+  scan,
+  avatar
 };
 
 export const icons = {
