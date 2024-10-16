@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { icons, images } from '@/constants';
 import ProfileTabButton from '@/components/ProfileTabButtons';
 import { useRouter } from 'expo-router';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Subscription = () => {
   const router = useRouter();
@@ -34,15 +35,15 @@ const Subscription = () => {
           </Text>
           <View className="my-2">
             {[
-              { id: 1, point: 'Scan food in Realtime' },
-              { id: 2, point: 'Track nutrition intake' },
-              { id: 3, point: 'Get health reports' },
+              { id: 1, point: "Scan food in Realtime" },
+              { id: 2, point: "Track nutrition intake" },
+              { id: 3, point: "Get health reports" },
             ].map((item) => (
-              <View key={item.id} className="flex-row items-center mt-1 ml-12">
-                <Image source={icons.tick} className="w-6 h-6" />
-                <Text className="ml-3 text-lg tracking-wide">
-                  {item.point}
+              <View key={item.id} className="flex-row items-center mt-1 ml-16">
+                <Text>
+                  <FontAwesome size={20} name="check" color="green" />
                 </Text>
+                <Text className="ml-3 text-lg tracking-wide">{item.point}</Text>
               </View>
             ))}
           </View>
@@ -50,7 +51,7 @@ const Subscription = () => {
         <ProfileTabButton
           title="Buy Premium"
           className="mt-6 mx-4"
-          onPress={() => router.push('/purchase')}
+          onPress={() => router.push("/purchase")}
         />
         <Text className="font-bold mt-2 text-red-600">Restore Purchase</Text>
       </View>
