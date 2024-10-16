@@ -8,7 +8,7 @@ export default function EmailVerification() {
 
   const handleOtpVerify = (otp: number) => {
     console.log("OTP Verified:", otp); 
-    router.replace("/(profile)/more-info");
+    router.replace("/(profile-building)/more-info");
     // Handle OTP verification logic here
   };
 
