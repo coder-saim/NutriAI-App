@@ -11,11 +11,11 @@ export default function ProfileButton({ Name, icon, page }: { Name: string, icon
 
   return (
     <TouchableOpacity onPress={onOptionPress} className='mt-6 flex-row items-center space-x-4'>
-      <View className='w-12 h-12 bg-[#bcf9bc] rounded-lg justify-center items-center'>
-        <Image source={icon} className='w-6 h-6' />
+      <View className='w-12 h-12 bg-green-50 rounded-lg justify-center items-center'>
+        {icon}
       </View>
-      <Text className='text-left text-xl font-medium flex-1'>{Name}</Text>
-      <Image source={arrowRight} className='w-8 h-8 ml-auto'/>
+      <Text className='text-left text-lg font-medium flex-1'>{Name}</Text>
+      <Image source={arrowRight} className='w-6 h-6 ml-auto'/>
     </TouchableOpacity>
   );
 }
