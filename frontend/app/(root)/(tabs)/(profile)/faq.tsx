@@ -37,7 +37,7 @@ const FAQ = () => {
     setExpandedId(expandedId === id ? null : id);
   };
 
-  return (
+  return ( 
     <ScrollView className="flex bg-white">
       <View className="flex h-full items-center bg-white">
         <Image source={images.faq} className="w-80 h-72"/>
