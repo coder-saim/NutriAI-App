@@ -42,7 +42,18 @@ def get_user(id: int,db: Session = Depends(get_db)):
 
 
 
+@router.put('/reset_password', status_code=status.HTTP_200_OK)
+def reset_password(email: str, password: str, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.email == email).first()
+    if user == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail='Oops! user not found!')
 
+    hashed_password = utils.hash_password(password)
+    user.password = hashed_password
+    db.commit()
+
+    return {"message": "Password reset."}
 
 
 
