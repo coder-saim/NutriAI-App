@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from .. import database, schemas, models, utils, oauth2
 
 router = APIRouter(tags=['Authentication'])
-
+global otp_code
 
 @router.post('/users/login', response_model=schemas.Token)
 def login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(database.get_db)):
@@ -27,3 +27,20 @@ def login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session =
 
     return {"access_token": access_token, "token_type": "bearer"}
      
+
+
+
+@router.post('/users/email_verification', status_code=status.HTTP_200_OK)
+def email_verification(email: str):
+    global otp_code
+    otp_code = utils.get_otp_code(email)
+
+    return {"message": "Email sent."}
+    
+
+@router.post('/users/otp_verification', status_code=status.HTTP_200_OK)
+def otp_verification(input_otp: int):
+    if int(otp_code) == input_otp:
+        return {"message": "OTP Verification successful."}
+    else:
+        return {"message": "Invalid OTP verification."}
