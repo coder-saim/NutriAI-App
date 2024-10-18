@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from .. import database, schemas, models, utils, oauth2
 
 router = APIRouter(tags=['Authentication'])
-global otp_code
+
 
 @router.post('/users/login', response_model=schemas.Token)
 def login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(database.get_db)):
@@ -31,16 +31,31 @@ def login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session =
 
 
 @router.post('/users/email_verification', status_code=status.HTTP_200_OK)
-def email_verification(email: str):
-    global otp_code
-    otp_code = utils.get_otp_code(email)
+def email_verification(email: str, db: Session = Depends(database.get_db)):
+    
+    user = db.query(models.User).filter(models.User.email == email).first()
+    if user == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail='Oops! user not found!')
 
-    return {"message": "Email sent."}
+    otp_code = utils.get_otp_code(email)
+    user.password_reset_tokens = otp_code
+    db.commit()
+
+    return {"message": "Otp code sent to your email."}
     
 
 @router.post('/users/otp_verification', status_code=status.HTTP_200_OK)
-def otp_verification(input_otp: int):
-    if int(otp_code) == input_otp:
+def otp_verification(email: str, input_otp: int, db: Session = Depends(database.get_db)):
+
+    user = db.query(models.User).filter(models.User.email == email).first()
+    if user == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail='Oops! user not found!')
+    
+    if int(user.password_reset_tokens) == input_otp:
+        user.password_reset_tokens = None
+        db.commit()
         return {"message": "OTP Verification successful."}
     else:
         return {"message": "Invalid OTP verification."}
