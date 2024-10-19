@@ -1,6 +1,8 @@
 import ProfileButton from "@/components/ProfileButton";
 import { icons, images } from "@/constants";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
 
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 
@@ -35,12 +37,13 @@ const Layout = () => {
       Name: "FAQ",
       image: <FontAwesome size={26} name="comment" color="green" />,
       page: "faq",
-    }
-  ]; 
+    },
+  ];
 
-  const handleSignOut = () => {
-    
-  }
+  const handleSignOut = async () => {
+    await AsyncStorage.setItem("authToken", JSON.stringify(false));
+    router.replace("/(auth)/sign-in");
+  };
 
   return (
     <ScrollView className="flex bg-white">
@@ -63,7 +66,9 @@ const Layout = () => {
             <View className="w-12 h-12 bg-green-50 rounded-lg justify-center items-center">
               <Image source={icons.out} className="w-6 h-6 ml-1" />
             </View>
-            <Text className="text-left text-lg font-medium flex-1">Sign Out</Text>
+            <Text className="text-left text-lg font-medium flex-1">
+              Sign Out
+            </Text>
             <Image source={icons.arrowRight} className="w-6 h-6 ml-auto" />
           </TouchableOpacity>
         </View>
