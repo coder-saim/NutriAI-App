@@ -7,27 +7,48 @@ import {
   Text,
   TouchableOpacity,
   View,
+  StyleSheet,
+  ToastAndroid,
+  StatusBar,
 } from "react-native";
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import { icons, images } from "@/constants";
 import { FontAwesome } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import api from "@/constants/api";
+import axios from "axios";
 
 const SignIn = () => {
-  const [signIn, setActive] = useState();
-  const isLoaded = false;
+  const showToast = () => {
+    ToastAndroid.show("A pikachu appeared nearby !", ToastAndroid.SHORT);
+  };
 
   const [form, setForm] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
-  const onSignInPress = useCallback(async () => {
-    router.replace("/(root)/(tabs)/home");
-  }, [isLoaded, form]);
+  const onSignInPress = async () => {
+    await axios
+      .post("http://192.168.1.7:8000/users/login", form)
+      .then(async (response) => {
+        console.log("Login successful:", response.status);
+        if (response.status == 200) {
+          await AsyncStorage.setItem("authToken", JSON.stringify(true));
+          router.replace("/(root)/(tabs)/home");
+        }
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      });
+  };
 
   const handleGoogleSignIn = async () => {
+    showToast();
     Alert.alert("Comming Soon!");
+    const authToken = await AsyncStorage.getItem("authToken");
+    console.log(authToken);
   };
 
   return (
@@ -43,20 +64,25 @@ const SignIn = () => {
           </Text>
         </View>
 
+        <StatusBar
+          backgroundColor="white" // Background color for Android
+          barStyle="dark-content" // Light-content for iOS and Android
+          hidden={false} // Show or hide the status bar
+        />
 
         <View className="px-5 py-4">
           <InputField
             label="Email"
-            placeholder="Enter email"
+            placeholder="Enter your email"
             icon={icons.email}
             textContentType="emailAddress"
-            value={form.email}
-            onChangeText={(value) => setForm({ ...form, email: value })}
+            value={form.username}
+            onChangeText={(value) => setForm({ ...form, username: value })}
           />
 
           <InputField
             label="Password"
-            placeholder="Enter password"
+            placeholder="Enter your password"
             icon={icons.lock}
             secureTextEntry={true}
             textContentType="password"
@@ -78,10 +104,10 @@ const SignIn = () => {
               <Text className="text-gray-600">Remember me</Text>
             </View>
 
-            <TouchableOpacity onPress={() => router.push("/(auth)/reset-password")}>
-              <Text className="text-right text-red-500">
-                Forgot password?
-              </Text>
+            <TouchableOpacity
+              onPress={() => router.push("/(auth)/reset-password")}
+            >
+              <Text className="text-right text-red-500">Forgot password?</Text>
             </TouchableOpacity>
           </View>
 
