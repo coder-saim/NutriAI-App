@@ -16,8 +16,8 @@ import InputField from "@/components/InputField";
 import { icons, images } from "@/constants";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "@/constants/api";
 import axios from "axios";
+import { baseURL } from "@/constants/api";
 
 const SignIn = () => {
   const showToast = () => {
@@ -30,12 +30,19 @@ const SignIn = () => {
   });
 
   const onSignInPress = async () => {
+    if (!form.username || !form.password) {
+      ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
+      return;
+    }
     await axios
-      .post("http://192.168.1.7:8000/users/login", form)
+      .post(`${baseURL}/users/login`, form)
       .then(async (response) => {
         console.log("Login successful:", response.status);
         if (response.status == 200) {
-          await AsyncStorage.setItem("authToken", JSON.stringify(true));
+          await AsyncStorage.setItem(
+            "authToken",
+            JSON.stringify(form.username)
+          );
           router.replace("/(root)/(tabs)/home");
         }
       })
