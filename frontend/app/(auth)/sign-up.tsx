@@ -1,6 +1,7 @@
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import { icons, images } from "@/constants";
+import { baseURL } from "@/constants/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { Link, router } from "expo-router";
@@ -96,11 +97,11 @@ const SingUp = () => {
     }
 
     await axios
-      .post("http://192.168.1.7:8000/users/register", form)
+      .post(`${baseURL}/users/register`, form)
       .then(async (response) => {
         console.log("Sign Up successful:", response.status);
         if (response.status == 201) {
-          await AsyncStorage.setItem("authToken", JSON.stringify(true));
+          await AsyncStorage.setItem("authToken", JSON.stringify(form.email));
           router.push("/(auth)/email-verify");
         }
       })
