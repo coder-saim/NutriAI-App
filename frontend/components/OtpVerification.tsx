@@ -11,19 +11,15 @@ import {
   Alert,
 } from "react-native";
 
-
-
-
-
 export default function OtpVerification({
   email,
   onVerify,
-  otpLength = 6, 
-  timerDuration = 30, 
+  otpLength = 6,
+  timerDuration = 30,
 }: OtpVerificationProps) {
-  const [otp, setOtp] = useState<string[]>(Array(otpLength).fill("")); 
-  const [timer, setTimer] = useState(timerDuration); 
-  const [resendDisabled, setResendDisabled] = useState(true); 
+  const [otp, setOtp] = useState<string[]>(Array(otpLength).fill(""));
+  const [timer, setTimer] = useState(timerDuration);
+  const [resendDisabled, setResendDisabled] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -52,8 +48,8 @@ export default function OtpVerification({
   };
 
   const handleResend = () => {
-    setTimer(timerDuration); 
-    setResendDisabled(true); 
+    setTimer(timerDuration);
+    setResendDisabled(true);
     // Add logic to resend the OTP if needed
   };
 
@@ -61,9 +57,7 @@ export default function OtpVerification({
     <View className="flex justify-center items-center bg-gray-100 px-6">
       <Image source={images.email_verify} className="w-72 h-72 mt-8" />
 
-      <Text className="text-3xl font-bold text-black mb-2">
-        Almost there
-      </Text>
+      <Text className="text-3xl font-bold text-black mb-2">Almost there</Text>
 
       <Text className="text-center text-black mb-4">
         Please enter the {otpLength}-digit code sent to your email{" "}
@@ -93,7 +87,7 @@ export default function OtpVerification({
           disabled={resendDisabled}
           className={resendDisabled ? "text-gray-400" : "text-red-500"}
         >
-          <Text className={resendDisabled ? "text-gray-400" : "text-red-500"}>
+          <Text className={resendDisabled ? "text-gray-400" : "text-green-600"}>
             Resend Again
           </Text>
         </TouchableOpacity>
