@@ -41,7 +41,9 @@ const Layout = () => {
   ];
 
   const handleSignOut = async () => {
-    await AsyncStorage.setItem("authToken", JSON.stringify(false));
+    await AsyncStorage.setItem("authToken", JSON.stringify(null));
+    const authToken = await AsyncStorage.getItem("authToken");
+    // console.log(authToken);
     router.replace("/(auth)/sign-in");
   };
 
