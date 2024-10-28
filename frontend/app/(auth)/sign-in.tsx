@@ -21,7 +21,7 @@ import axios from "axios";
 
 const SignIn = () => {
   const showToast = () => {
-    ToastAndroid.show("A pikachu appeared nearby !", ToastAndroid.SHORT);
+    ToastAndroid.show("Comming Soon!", ToastAndroid.SHORT);
   };
 
   const [form, setForm] = useState({
@@ -46,7 +46,7 @@ const SignIn = () => {
 
   const handleGoogleSignIn = async () => {
     showToast();
-    Alert.alert("Comming Soon!");
+    // Alert.alert("Comming Soon!");
     const authToken = await AsyncStorage.getItem("authToken");
     console.log(authToken);
   };
