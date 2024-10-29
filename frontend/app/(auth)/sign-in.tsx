@@ -43,11 +43,13 @@ const SignIn = () => {
             "authToken",
             JSON.stringify(form.username)
           );
+          ToastAndroid.show("Sign In successful!", ToastAndroid.SHORT);
           router.replace("/(root)/(tabs)/home");
         }
       })
       .catch((error) => {
-        console.error("Login failed:", error);
+        console.log("Login failed:", error);
+        ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
       });
   };
 
