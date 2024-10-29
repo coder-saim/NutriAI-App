@@ -67,3 +67,11 @@ class Auth(BaseModel):
     username: str
     password: str
 
+class Email(BaseModel):
+    email: str
+
+
+class OTP(BaseModel):
+    email: str
+    input_otp: int
+
