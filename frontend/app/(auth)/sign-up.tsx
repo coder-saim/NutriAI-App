@@ -96,17 +96,41 @@ const SingUp = () => {
       return;
     }
 
+    const sendOtpCode = async () => {
+      await axios
+        .post(`${baseURL}/users/email_verification`, { email: form.email })
+        .then(async (response) => {
+          console.log("OTP code sent successful:", response.status);
+          if (response.status == 200) {
+            ToastAndroid.show(
+              "OTP code sent to your email!",
+              ToastAndroid.SHORT
+            );
+            router.push({
+              pathname: "/(auth)/email-verify",
+              params: { email: form.email },
+            });
+          }
+        })
+        .catch((error) => {
+          console.log("OTP code sent failed:", error);
+          ToastAndroid.show("OTP code sent failed!", ToastAndroid.SHORT);
+        });
+    };
+
     await axios
       .post(`${baseURL}/users/register`, form)
       .then(async (response) => {
         console.log("Sign Up successful:", response.status);
         if (response.status == 201) {
           await AsyncStorage.setItem("authToken", JSON.stringify(form.email));
-          router.push("/(auth)/email-verify");
+          ToastAndroid.show("Sign Up successful!", ToastAndroid.SHORT);
+          sendOtpCode();
         }
       })
       .catch((error) => {
-        console.error("Login failed:", error);
+        console.log("Sign up failed:", error);
+        ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
       });
   };
 
