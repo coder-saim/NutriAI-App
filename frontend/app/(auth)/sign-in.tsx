@@ -29,20 +29,24 @@ const SignIn = () => {
     password: "",
   });
 
-  const onSignInPress = async () => {
-    await axios
-      .post("http://192.168.1.7:8000/users/login", form)
-      .then(async (response) => {
-        console.log("Login successful:", response.status);
-        if (response.status == 200) {
-          await AsyncStorage.setItem("authToken", JSON.stringify(true));
-          router.replace("/(root)/(tabs)/home");
-        }
-      })
-      .catch((error) => {
-        console.error("Login failed:", error);
-      });
-  };
+  // const onSignInPress = async () => {
+  //   await axios
+  //     .post("http://192.168.1.7:8000/users/login", form)
+  //     .then(async (response) => {
+  //       console.log("Login successful:", response.status);
+  //       if (response.status == 200) {
+  //         await AsyncStorage.setItem("authToken", JSON.stringify(true));
+  //         router.replace("/(root)/(tabs)/home");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Login failed:", error);
+  //     });
+  // };
+
+  const onSignInPress = () => {
+    router.replace("/(root)/(tabs)/home");
+  }
 
   const handleGoogleSignIn = async () => {
     showToast();
