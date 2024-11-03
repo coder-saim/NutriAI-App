@@ -12,7 +12,7 @@ interface QuestionPageProps {
 const QuestionPage = ({ title, options, selectedValue, onValueChange }: QuestionPageProps) => {
   return (
     <View>
-      <Text className="text-2xl text-left font-bold text-black mt-24 mb-10">
+      <Text className="text-2xl text-left font-bold text-black mt-4 mb-8">
         {title}
       </Text>
       <Radio

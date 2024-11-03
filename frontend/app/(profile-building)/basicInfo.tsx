@@ -5,7 +5,7 @@ import InputField from '@/components/InputField'
 const BasicInfo = () => {
   return (
     <View>
-      <Text className="text-2xl text-left font-bold text-black mt-24 mb-10">
+      <Text className="text-2xl text-left font-bold text-black mt-8 mb-10">
         Please mention your basic info
       </Text>
       <InputField
