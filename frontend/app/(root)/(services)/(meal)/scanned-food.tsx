@@ -34,7 +34,7 @@ const ImageScreen = () => {
         const analysisData = JSON.stringify(response.data);
         router.push({
           pathname: "/(meal)/analyzed-food",
-          params: { analysisData },
+          params: { analysisData, imageUri },
         });
 
       } catch (error) {
