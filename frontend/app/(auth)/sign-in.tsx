@@ -105,18 +105,18 @@ const SignIn = () => {
             className="mt-2"
           />
 
-          <View className="flex flex-row justify-between mt-2 mx-2">
-            <View className="flex-row items-center mb-2">
+          <View className=" mt-2 mx-2">
+            {/* <View className="flex-row items-center mb-2">
               <TouchableOpacity className="mr-2">
                 <View className="h-4 w-4 border border-gray-400 rounded"></View>
               </TouchableOpacity>
               <Text className="text-gray-600">Remember me</Text>
-            </View>
+            </View> */}
 
             <TouchableOpacity
               onPress={() => router.push("/(auth)/reset-password")}
             >
-              <Text className="text-right text-red-500">Forgot password?</Text>
+              <Text className="text-right mr-2 text-red-500">Forgot password?</Text>
             </TouchableOpacity>
           </View>
 
