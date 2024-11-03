@@ -1,12 +1,12 @@
 import { ProgressBar } from 'react-native-paper';
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform, Image, BackHandler } from "react-native";
 import { router } from "expo-router";
 import BasicInfo from "./basicInfo";
 import QuestionPage from "@/components/QuestionPage";
+import { icons } from '@/constants';
 
 export default function BasicInfo1() {
-
   const [page, setPage] = useState(1);
 
   const handleNext = () => {
@@ -16,6 +16,28 @@ export default function BasicInfo1() {
       setPage(page + 1);
     }
   };
+
+  const handlePrev = () => {
+    if (page === 1) {
+      router.replace("/(profile-building)/more-info");
+    } else {
+      setPage(page - 1);
+    }
+  };
+
+  const handleSkip = () => {
+    router.replace("/(root)/(tabs)/home");
+  }
+
+  useEffect(() => {
+    const backAction = () => {
+      handlePrev();
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener("hardwareBackPress", backAction);
+    return () => backHandler.remove();
+  }, [page]);
 
   const [diabetesType, setDiabetesType] = useState("");
   const [diabetesDuration, setDiabetesDuration] = useState("");
@@ -97,6 +119,14 @@ export default function BasicInfo1() {
     >    
       <ScrollView contentContainerStyle={{flexGrow: 1}} className="bg-white">
         <View className="flex-1 pt-6 bg-white px-6">
+          <View className='flex-row justify-between mt-4 items-center'>
+            <TouchableOpacity onPress={handlePrev} className="">
+              <Image source={icons.backArrow} className="w-10 h-10 -ml-1" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleSkip} className="">
+              <Text className='text-black text-xl font-bold mr-1'>Skip</Text>
+            </TouchableOpacity>
+          </View>
           {renderComponent()}
           <TouchableOpacity onPress={handleNext} className="rounded-xl border-original-100 border h-16 justify-end mt-auto mb-8">
             <View className="flex-row justify-between mx-8 mb-4">

@@ -79,6 +79,37 @@ const SingUp = () => {
   };
 
   const onSignUpPress = async () => {
+
+    if (!form.name || !form.email || !form.password) {
+      ToastAndroid.show(
+        "Name, Email or Password can not be empty!",
+        ToastAndroid.SHORT
+      );
+      return;
+    }
+
+    if (!validateEmail(form.email)) {
+      ToastAndroid.show("Email should be valid!", ToastAndroid.SHORT);
+      return;
+    }
+
+    if (validatePasswordStrength(form.password)) {
+      return;
+    }
+
+    await axios
+      .post("http://192.168.1.7:8000/users/register", form)
+      .then(async (response) => {
+        console.log("Sign Up successful:", response.status);
+        if (response.status == 201) {
+          await AsyncStorage.setItem("authToken", JSON.stringify(true));
+          router.push("/(auth)/email-verify");
+        }
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      });
+
     if (!form.name || !form.email || !form.password) {
       ToastAndroid.show(
         "Name, Email or Password can not be empty!",
@@ -132,6 +163,7 @@ const SingUp = () => {
         console.log("Sign up failed:", error);
         ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
       });
+
   };
 
   return (

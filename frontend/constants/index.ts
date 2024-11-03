@@ -33,6 +33,7 @@ import healthService from "@/assets/images/health-service.png";
 import blackArrow from "@/assets/icons/Black-Arrow.png";
 import faq from "@/assets/images/FAQ.png"
 import avatar from "@/assets/images/avatar.png"
+import backArrow from "@/assets/icons/back-arrow.png";
 
 export const images = {
   onboarding1,
@@ -52,7 +53,7 @@ export const images = {
   faq,
   burger,
   scan,
-  avatar
+  avatar,
 };
 
 export const icons = {
@@ -72,7 +73,8 @@ export const icons = {
   clock,
   calendar,
   arrowRight,
-  blackArrow
+  blackArrow,
+  backArrow,
 };
 
 export const onboarding = [
