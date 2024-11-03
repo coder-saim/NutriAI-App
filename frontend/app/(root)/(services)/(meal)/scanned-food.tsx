@@ -1,9 +1,9 @@
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, Alert, ActivityIndicator } from "react-native";
 import axios from 'axios';
 
-const API_URL = "http://192.168.0.199:8000/analyze-image";
+const API_URL = "http://192.168.0.199:8000/analyze-image/";
 
 const ImageScreen = () => {
   const { imageUri } = useLocalSearchParams<{ imageUri: string }>();
@@ -14,13 +14,8 @@ const ImageScreen = () => {
     try {
 
       const formData = new FormData();
-      
 
       const filename = imageUri.split('/').pop() || 'image.jpg';
-      
-      console.log(filename);
-      console.log(imageUri);
-      
 
       formData.append('image', {
         uri: imageUri,
@@ -32,35 +27,21 @@ const ImageScreen = () => {
         const response = await axios.post(API_URL, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
+            'Accept': 'application/json',
           },
         });
 
-        console.log(response.data);
-        
+        const analysisData = JSON.stringify(response.data);
+        router.push({
+          pathname: "/(meal)/analyzed-food",
+          params: { analysisData },
+        });
 
       } catch (error) {
         console.error(error);
         alert('Failed to upload image');
       }
 
-      // const response = await fetch(API_URL, {
-      //   method: 'POST',
-      //   body: formData,
-      //   headers: {
-      //     'Accept': 'application/json',
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      // });
-
-      // const data = await response.json();
-      
-
-      // router.push({
-      //   pathname: "/(meal)/analyzed-food",
-      //   params: { 
-      //     analysisData: JSON.stringify(data)
-      //   },
-      // });
     } catch (error) {
       console.error('Error analyzing food:', error);
       Alert.alert(

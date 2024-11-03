@@ -2,63 +2,68 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { images } from "@/constants";
 import { router, useLocalSearchParams } from "expo-router";
+import { data } from '../../../../constants/index';
 
 const AnalyzedFoodScreen = () => {
   const { analysisData } = useLocalSearchParams<{ analysisData: string }>();
   const foodData = analysisData ? JSON.parse(analysisData) : null;
 
-  // Extract nutrition information from the API response
-  const nutritionInfo = foodData?.data?.items?.[0]?.nutrition || {
-    protein: "0",
-    calories: "0",
-    fat: "0",
-    carbs: "0"
+  const food = foodData?.data?.items?.[0]?.food?.[0]?.food_info
+
+  console.log(food?.nutrition?.calories_100g);
+      
+  const nutritionInfo = {
+    protein: food?.protein || 0,
+    calories: food?.calories || 0,
+    fat: food?.fat || 0,
+    carbs: food?.carbs || 0,
   };
+
+  const calorie = food?.nutrition?.calories_100g || 0;
+  const protein = food?.nutrition?.proteins_100g || 0;
+  const fat = food?.nutrition?.fat_100g || 0;
+  const carbs = food?.nutrition?.carbs_100g || 0
+
 
   return (
     <ScrollView className="flex-1 bg-white p-4">
-      <View className="items-center mb-6">
+      <View className="items-center">
         <Image source={images.burger} className="w-32 h-32" />
       </View>
 
+      <View className="p-4 rounded-xl mb-2">
+        <Text className="text-3xl font-bold text-center text-gray-800">
+          {food?.display_name}
+        </Text>
+      </View>
       <View className="bg-green-100 p-4 rounded-xl mb-6">
         <View className="flex-row justify-between">
           <View className="items-center">
-            <Text className="text-lg font-bold text-gray-800">Protein</Text>
+            <Text className="text-lg font-bold text-gray-800">Calories</Text>
             <Text className="text-xl font-bold text-green-600">
-              {nutritionInfo.protein}g
+              {calorie} kCal
             </Text>
           </View>
           <View className="items-center">
-            <Text className="text-lg font-bold text-gray-800">Calories</Text>
+            <Text className="text-lg font-bold text-gray-800">Protien</Text>
             <Text className="text-xl font-bold text-green-600">
-              {nutritionInfo.calories}
+              {protein}g
+            </Text>
+          </View>
+          <View className="items-center">
+            <Text className="text-lg font-bold text-gray-800">Carbohydrates</Text>
+            <Text className="text-xl font-bold text-green-600">
+              {carbs}g
             </Text>
           </View>
           <View className="items-center">
             <Text className="text-lg font-bold text-gray-800">Fat</Text>
             <Text className="text-xl font-bold text-green-600">
-              {nutritionInfo.fat}g
-            </Text>
-          </View>
-          <View className="items-center">
-            <Text className="text-lg font-bold text-gray-800">Carbs</Text>
-            <Text className="text-xl font-bold text-green-600">
-              {nutritionInfo.carbs}g
+              {fat}g
             </Text>
           </View>
         </View>
       </View>
-
-      <View className="mb-6">
-        <Text className="text-lg font-bold mb-2">Details</Text>
-        <Text className="text-sm text-gray-600">
-          {foodData?.data?.items?.[0]?.name || "Food item"}{" "}
-          <Text className="text-green-600 font-bold">Read More...</Text>
-        </Text>
-      </View>
-
-      {/* Rest of your existing UI components */}
       
       <TouchableOpacity
         onPress={() => router.push("/(meal)/add-food")}
