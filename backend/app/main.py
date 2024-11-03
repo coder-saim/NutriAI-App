@@ -1,7 +1,7 @@
 from fastapi import Depends, FastAPI, HTTPException, Response, status
 from . import models
 from .database import engine
-from .routers import user, auth, food
+from .routers import user, auth, food, food_ai_model
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -26,5 +26,6 @@ app.add_middleware(
 app.include_router(user.router)
 app.include_router(auth.router)
 app.include_router(food.router)
+app.include_router(food_ai_model.router)
 
 
