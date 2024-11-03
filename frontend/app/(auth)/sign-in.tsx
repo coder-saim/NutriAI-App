@@ -16,8 +16,8 @@ import InputField from "@/components/InputField";
 import { icons, images } from "@/constants";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "@/constants/api";
 import axios from "axios";
+import { baseURL } from "@/constants/api";
 
 const SignIn = () => {
   const showToast = () => {
@@ -29,24 +29,31 @@ const SignIn = () => {
     password: "",
   });
 
-  // const onSignInPress = async () => {
-  //   await axios
-  //     .post("http://192.168.1.7:8000/users/login", form)
-  //     .then(async (response) => {
-  //       console.log("Login successful:", response.status);
-  //       if (response.status == 200) {
-  //         await AsyncStorage.setItem("authToken", JSON.stringify(true));
-  //         router.replace("/(root)/(tabs)/home");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Login failed:", error);
-  //     });
-  // };
 
-  const onSignInPress = () => {
-    router.replace("/(root)/(tabs)/home");
-  }
+  const onSignInPress = async () => {
+    if (!form.username || !form.password) {
+      ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
+      return;
+    }
+    await axios
+      .post(`${baseURL}/users/login`, form)
+      .then(async (response) => {
+        console.log("Login successful:", response.status);
+        if (response.status == 200) {
+          await AsyncStorage.setItem(
+            "authToken",
+            JSON.stringify(form.username)
+          );
+          ToastAndroid.show("Sign In successful!", ToastAndroid.SHORT);
+          router.replace("/(root)/(tabs)/home");
+        }
+      })
+      .catch((error) => {
+        console.log("Login failed:", error);
+        ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
+      });
+  };
+
 
   const handleGoogleSignIn = async () => {
     showToast();
@@ -100,18 +107,18 @@ const SignIn = () => {
             className="mt-2"
           />
 
-          <View className="flex flex-row justify-between mt-2 mx-2">
-            <View className="flex-row items-center mb-2">
+          <View className=" mt-2 mx-2">
+            {/* <View className="flex-row items-center mb-2">
               <TouchableOpacity className="mr-2">
                 <View className="h-4 w-4 border border-gray-400 rounded"></View>
               </TouchableOpacity>
               <Text className="text-gray-600">Remember me</Text>
-            </View>
+            </View> */}
 
             <TouchableOpacity
               onPress={() => router.push("/(auth)/reset-password")}
             >
-              <Text className="text-right text-red-500">Forgot password?</Text>
+              <Text className="text-right mr-2 text-red-500">Forgot password?</Text>
             </TouchableOpacity>
           </View>
 

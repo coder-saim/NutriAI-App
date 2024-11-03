@@ -1,6 +1,7 @@
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import { icons, images } from "@/constants";
+import { baseURL } from "@/constants/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { Link, router } from "expo-router";
@@ -79,37 +80,90 @@ const SingUp = () => {
 
   const onSignUpPress = async () => {
 
-    router.replace("/(profile-building)/more-info");
+    if (!form.name || !form.email || !form.password) {
+      ToastAndroid.show(
+        "Name, Email or Password can not be empty!",
+        ToastAndroid.SHORT
+      );
+      return;
+    }
 
-    // if (!form.name || !form.email || !form.password) {
-    //   ToastAndroid.show(
-    //     "Name, Email or Password can not be empty!",
-    //     ToastAndroid.SHORT
-    //   );
-    //   return;
-    // }
+    if (!validateEmail(form.email)) {
+      ToastAndroid.show("Email should be valid!", ToastAndroid.SHORT);
+      return;
+    }
 
-    // if (!validateEmail(form.email)) {
-    //   ToastAndroid.show("Email should be valid!", ToastAndroid.SHORT);
-    //   return;
-    // }
+    if (validatePasswordStrength(form.password)) {
+      return;
+    }
 
-    // if (validatePasswordStrength(form.password)) {
-    //   return;
-    // }
+    await axios
+      .post("http://192.168.1.7:8000/users/register", form)
+      .then(async (response) => {
+        console.log("Sign Up successful:", response.status);
+        if (response.status == 201) {
+          await AsyncStorage.setItem("authToken", JSON.stringify(true));
+          router.push("/(auth)/email-verify");
+        }
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      });
 
-    // await axios
-    //   .post("http://192.168.1.7:8000/users/register", form)
-    //   .then(async (response) => {
-    //     console.log("Sign Up successful:", response.status);
-    //     if (response.status == 201) {
-    //       await AsyncStorage.setItem("authToken", JSON.stringify(true));
-    //       router.push("/(auth)/email-verify");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Login failed:", error);
-    //   });
+    if (!form.name || !form.email || !form.password) {
+      ToastAndroid.show(
+        "Name, Email or Password can not be empty!",
+        ToastAndroid.SHORT
+      );
+      return;
+    }
+
+    if (!validateEmail(form.email)) {
+      ToastAndroid.show("Email should be valid!", ToastAndroid.SHORT);
+      return;
+    }
+
+    if (validatePasswordStrength(form.password)) {
+      return;
+    }
+
+    const sendOtpCode = async () => {
+      await axios
+        .post(`${baseURL}/users/email_verification`, { email: form.email })
+        .then(async (response) => {
+          console.log("OTP code sent successful:", response.status);
+          if (response.status == 200) {
+            ToastAndroid.show(
+              "OTP code sent to your email!",
+              ToastAndroid.SHORT
+            );
+            router.push({
+              pathname: "/(auth)/email-verify",
+              params: { email: form.email },
+            });
+          }
+        })
+        .catch((error) => {
+          console.log("OTP code sent failed:", error);
+          ToastAndroid.show("OTP code sent failed!", ToastAndroid.SHORT);
+        });
+    };
+
+    await axios
+      .post(`${baseURL}/users/register`, form)
+      .then(async (response) => {
+        console.log("Sign Up successful:", response.status);
+        if (response.status == 201) {
+          await AsyncStorage.setItem("authToken", JSON.stringify(form.email));
+          ToastAndroid.show("Sign Up successful!", ToastAndroid.SHORT);
+          sendOtpCode();
+        }
+      })
+      .catch((error) => {
+        console.log("Sign up failed:", error);
+        ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
+      });
+
   };
 
   return (

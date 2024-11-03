@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, status, HTTPException, Response
+from fastapi.responses import JSONResponse
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from .. import database, schemas, models, utils, oauth2
@@ -31,8 +32,8 @@ def login(user_credentials: schemas.Auth, db: Session = Depends(database.get_db)
 
 
 @router.post('/users/email_verification', status_code=status.HTTP_200_OK)
-def email_verification(email: str, db: Session = Depends(database.get_db)):
-    
+def email_verification(emailObj: schemas.Email, db: Session = Depends(database.get_db)):
+    email = emailObj.email 
     user = db.query(models.User).filter(models.User.email == email).first()
     if user == None:
         raise HTTPException(
@@ -46,16 +47,17 @@ def email_verification(email: str, db: Session = Depends(database.get_db)):
     
 
 @router.post('/users/otp_verification', status_code=status.HTTP_200_OK)
-def otp_verification(email: str, input_otp: int, db: Session = Depends(database.get_db)):
+def otp_verification(otpObj: schemas.OTP, db: Session = Depends(database.get_db)):
 
-    user = db.query(models.User).filter(models.User.email == email).first()
+    user = db.query(models.User).filter(models.User.email == otpObj.email).first()
     if user == None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail='Oops! user not found!')
     
-    if int(user.password_reset_tokens) == input_otp:
+    if int(user.password_reset_tokens) == otpObj.input_otp:
         user.password_reset_tokens = None
         db.commit()
         return {"message": "OTP Verification successful."}
     else:
-        return {"message": "Invalid OTP verification."}
+        return JSONResponse(content={"message": "Oops! Invalid OTP verification!"}, status_code=404)
+        

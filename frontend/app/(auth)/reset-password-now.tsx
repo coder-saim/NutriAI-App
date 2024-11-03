@@ -1,26 +1,51 @@
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import { icons, images } from "@/constants";
-import { Link, router } from "expo-router";
+import { baseURL } from "@/constants/api";
+import axios from "axios";
+import { Link, router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
-import { View, Text, Image, ScrollView, Alert } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Alert,
+  ToastAndroid,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const ResetPasswordNow = () => {
   const isLoaded = false;
+  const { email } = useLocalSearchParams<{ email: string }>();
 
   const [form, setForm] = useState({
     password: "",
-    retype_password: ""
-  });
-  const [verification, setVerification] = useState({
-    state: "default",
-    error: "",
-    code: "",
+    retype_password: "",
   });
 
   const onPressVerify = async () => {
-    router.replace("/(auth)/sign-in");
+    if (form.password === form.retype_password) {
+      await axios
+        .put(`${baseURL}/users/reset_password`, {
+          username: email,
+          password: form.password,
+        })
+        .then(async (response) => {
+          console.log("Reset password successfull: ", response.status);
+          if (response.status == 200) {
+            ToastAndroid.show(
+              "Reset password successfull!",
+              ToastAndroid.SHORT
+            );
+            router.replace("/(auth)/sign-in");
+          }
+        })
+        .catch((error) => {
+          console.log("Reset password failed:", error);
+          ToastAndroid.show("Reset password!", ToastAndroid.SHORT);
+        });
+    } else ToastAndroid.show("Password does not match!", ToastAndroid.SHORT);
   };
 
   return (
@@ -54,8 +79,10 @@ const ResetPasswordNow = () => {
             icon={icons.lock}
             secureTextEntry={true}
             textContentType="password"
-            value={form.password}
-            onChangeText={(value) => setForm({ ...form, password: value })}
+            value={form.retype_password}
+            onChangeText={(value) =>
+              setForm({ ...form, retype_password: value })
+            }
           />
 
           <CustomButton

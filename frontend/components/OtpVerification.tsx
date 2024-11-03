@@ -1,6 +1,9 @@
 import CustomButton from "@/components/CustomButton";
 import { images } from "@/constants";
+import { baseURL } from "@/constants/api";
 import { OtpVerificationProps } from "@/types/type";
+import axios from "axios";
+import { router, useLocalSearchParams } from "expo-router";
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -9,6 +12,7 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  ToastAndroid,
 } from "react-native";
 
 export default function OtpVerification({
@@ -40,17 +44,31 @@ export default function OtpVerification({
   };
 
   const handleVerify = () => {
-    if (otp.every((digit) => digit !== "") || true) {
+    if (otp.every((digit) => digit !== "")) {
       onVerify(parseInt(otp.join(""))); // Call the provided onVerify function
     } else {
-      Alert.alert("Error", "Please enter the complete OTP");
+      ToastAndroid.show("Please enter the complete OTP!", ToastAndroid.SHORT);
     }
+  };
+
+  const sendOtpCode = async () => {
+    await axios
+      .post(`${baseURL}/users/email_verification`, { email: email })
+      .then(async (response) => {
+        console.log("OTP code sent successful:", response.status);
+        if (response.status == 200) {
+          ToastAndroid.show("OTP code sent to your email!", ToastAndroid.SHORT);
+        }
+      })
+      .catch((error) => {
+        console.error("OTP code sent failed:", error);
+      });
   };
 
   const handleResend = () => {
     setTimer(timerDuration);
     setResendDisabled(true);
-    // Add logic to resend the OTP if needed
+    sendOtpCode();
   };
 
   return (

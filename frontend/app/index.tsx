@@ -7,13 +7,13 @@ const Homepage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [authToken, setAuthToken] = useState<string | null>(null);
 
+
   useEffect(() => {
     const checkAuthToken = async () => {
       const token = await AsyncStorage.getItem("authToken");
       setAuthToken(token);
       setIsLoading(false);
     };
-
     checkAuthToken();
   }, []);
 
@@ -25,6 +25,7 @@ const Homepage = () => {
     );
   }
 
+  
   return authToken ? (
     <Redirect href="/(root)/(tabs)/home" />
   ) : (
