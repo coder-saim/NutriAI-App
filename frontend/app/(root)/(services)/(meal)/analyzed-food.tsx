@@ -9,7 +9,7 @@ const AnalyzedFoodScreen = () => {
   const food = foodData?.data?.items?.[0]?.food?.[0]?.food_info;
 
   // Utility function to format numbers
-  const formatNumber = (num) => {
+  const formatNumber = (num: any) => {
     return num % 1 === 0 ? num.toString() : num.toFixed(2).replace(/\.?0+$/, '');
   };
 
@@ -20,9 +20,9 @@ const AnalyzedFoodScreen = () => {
 
   return (
     <View className="flex-1 bg-white">
-      <ScrollView className="flex-1 p-4">
+      <ScrollView className="flex-1">
         <View className="items-center">
-          <Image source={{ uri: imageUri }} className="w-60 h-60" />
+          <Image source={{ uri: imageUri }} className="w-full h-60" />
         </View>
 
         <View className="p-4 rounded-xl mb-2">
@@ -30,7 +30,7 @@ const AnalyzedFoodScreen = () => {
             {food?.display_name}
           </Text>
         </View>
-        <View className="bg-green-100 p-4 rounded-xl mb-6">
+        <View className="bg-green-100 p-4 mx-2 rounded-xl mb-6">
           <View className="flex-row justify-between">
             <View className="items-center">
               <Text className="text-lg font-bold text-gray-800">Calories</Text>

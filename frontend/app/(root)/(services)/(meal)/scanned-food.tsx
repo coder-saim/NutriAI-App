@@ -2,6 +2,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, Alert, ActivityIndicator } from "react-native";
 import axios from 'axios';
+import { baseURL } from "@/constants/api";
 
 const API_URL = "http://192.168.0.199:8000/analyze-image/";
 
@@ -24,7 +25,7 @@ const ImageScreen = () => {
       } as any);
 
       try {
-        const response = await axios.post(API_URL, formData, {
+        const response = await axios.post(`${baseURL}/food/analyze_image/`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             'Accept': 'application/json',
