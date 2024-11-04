@@ -12,14 +12,14 @@ const AnalyzedFoodScreen = () => {
     return num % 1 === 0 ? num.toString() : num.toFixed(2).replace(/\.?0+$/, '');
   };
 
-  const calorie = formatNumber(food?.nutrition?.calories_100g || 0);
+  const calories = formatNumber(food?.nutrition?.calories_100g || 0);
   const protein = formatNumber(food?.nutrition?.proteins_100g || 0);
   const fat = formatNumber(food?.nutrition?.fat_100g || 0);
   const carbs = formatNumber(food?.nutrition?.carbs_100g || 0);
 
   const finalData = {
     name: food?.display_name,
-    calorie,
+    calories,
     protein,
     fat,
     carbs,
@@ -51,7 +51,7 @@ const AnalyzedFoodScreen = () => {
             <View className="items-center">
               <Text className="text-lg font-bold text-gray-800">Calories</Text>
               <Text className="text-xl font-semibold text-green-600">
-                {calorie} Cal
+                {calories} Cal
               </Text>
             </View>
             <View className="items-center">
