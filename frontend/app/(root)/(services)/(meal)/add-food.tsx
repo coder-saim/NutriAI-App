@@ -1,11 +1,17 @@
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { TouchableOpacity, Text, View } from "react-native";
 
 const AddMealPage = () => {
+  const { mealData, imageUri } = useLocalSearchParams<{ mealData: string; imageUri: string }>();
+
   const handleSelectMeal = (mealType: string) => {
     router.push({
       pathname: "/(meal)/my-meals",
-      params: { mealType },
+      params: {
+        mealType,
+        mealData,
+        imageUri,
+      },
     });
   };
 

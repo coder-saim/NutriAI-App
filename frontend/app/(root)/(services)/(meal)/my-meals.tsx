@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { images } from "@/constants";
 import { Meal } from "@/types/type";
 
-const mealData: { [key: string]: Meal[] } = {
+const initialMealData: { [key: string]: Meal[] } = {
   Breakfast: [
     {
       name: "Oatmeal",
@@ -12,14 +12,8 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "180g",
       fat: "8g",
       carbs: "30g",
-    },
-    {
-      name: "Egg Toast",
-      protein: "20g",
-      calories: "250g",
-      fat: "10g",
-      carbs: "45g",
-    },
+      image: null,
+    }
   ],
   Lunch: [
     {
@@ -28,6 +22,7 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "320g",
       fat: "12g",
       carbs: "60g",
+      image: null,
     },
   ],
   Dinner: [
@@ -37,6 +32,7 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "280g",
       fat: "15g",
       carbs: "20g",
+      image: null,
     },
   ],
   Snacks: [
@@ -46,14 +42,35 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "120g",
       fat: "2g",
       carbs: "35g",
+      image: null,
     },
   ],
 };
 
 const MyMealsPage = () => {
-  let { mealType = "Breakfast" } = useLocalSearchParams<{ mealType: string }>();
+  const { mealType = "Breakfast", mealData, imageUri } = useLocalSearchParams<{ mealType: string; mealData: string; imageUri?: string }>();
   const [meal_type, setMeal_Type] = useState(mealType);
-  const selectedMeals = mealData[meal_type] || [];
+  const [meals, setMeals] = useState(initialMealData);
+
+  console.log("newMealData", JSON.parse(mealData));
+  console.log("imageUri", imageUri);
+  console.log("mealType", mealType);
+
+  console.log(meals[mealType]);
+
+  useEffect(() => {
+    if (mealData) {
+      const newMeal = JSON.parse(mealData);
+      newMeal.image = imageUri;
+
+      setMeals((prevMeals) => ({
+        ...prevMeals,
+        [mealType]: [...prevMeals[mealType], newMeal],
+      }));
+    }
+  }, [mealData, imageUri, mealType]);
+
+  const selectedMeals = meals[meal_type] || [];
 
   return (
     <ScrollView className="flex-1 bg-white p-4">
@@ -86,7 +103,7 @@ const MyMealsPage = () => {
       </View>
 
       {selectedMeals.length > 0 ? (
-        selectedMeals.map((meal: any, index: number) => (
+        selectedMeals.map((meal: Meal, index: number) => (
           <View
             key={index}
             className="flex-row justify-between items-center bg-green-100 rounded-lg p-4 mb-4"
