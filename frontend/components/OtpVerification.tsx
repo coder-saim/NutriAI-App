@@ -20,6 +20,7 @@ export default function OtpVerification({
   onVerify,
   otpLength = 6,
   timerDuration = 30,
+  loading = false
 }: OtpVerificationProps) {
   const [otp, setOtp] = useState<string[]>(Array(otpLength).fill(""));
   const [timer, setTimer] = useState(timerDuration);
@@ -96,7 +97,7 @@ export default function OtpVerification({
         ))}
       </View>
 
-      <CustomButton title="Verify" onPress={handleVerify} className="mb-4" />
+      <CustomButton title="Verify" onPress={handleVerify} className="mb-4" loading={loading} />
 
       <View className="flex-row justify-center mb-2">
         <Text className="text-black">Didn't receive any code? </Text>
