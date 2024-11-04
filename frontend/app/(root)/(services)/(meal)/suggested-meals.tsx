@@ -12,6 +12,7 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "180g",
       fat: "8g",
       carbs: "30g",
+      image: null,
     },
     {
       name: "Egg Toast",
@@ -19,6 +20,7 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "250g",
       fat: "10g",
       carbs: "45g",
+      image: null,
     },
   ],
   Lunch: [
@@ -28,6 +30,7 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "320g",
       fat: "12g",
       carbs: "60g",
+      image: null,
     },
   ],
   Dinner: [
@@ -37,6 +40,7 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "280g",
       fat: "15g",
       carbs: "20g",
+      image: null,
     },
   ],
   Snacks: [
@@ -46,6 +50,7 @@ const mealData: { [key: string]: Meal[] } = {
       calories: "120g",
       fat: "2g",
       carbs: "35g",
+      image: null,
     },
   ],
 };
