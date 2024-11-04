@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     secret_email: str
     app_token: str
 
+    api_url: str
+    api_key: str
+
     class Config:
         env_file = ".env"
 

@@ -18,8 +18,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const SingUp = () => {
   const [strength, setStrength] = useState(0);
-  const isLoaded = false;
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -79,51 +78,24 @@ const SingUp = () => {
   };
 
   const onSignUpPress = async () => {
-
+    setIsLoading(true);
     if (!form.name || !form.email || !form.password) {
       ToastAndroid.show(
         "Name, Email or Password can not be empty!",
         ToastAndroid.SHORT
       );
+      setIsLoading(false);
       return;
     }
 
     if (!validateEmail(form.email)) {
       ToastAndroid.show("Email should be valid!", ToastAndroid.SHORT);
+      setIsLoading(false);
       return;
     }
 
     if (validatePasswordStrength(form.password)) {
-      return;
-    }
-
-    await axios
-      .post("http://192.168.1.7:8000/users/register", form)
-      .then(async (response) => {
-        console.log("Sign Up successful:", response.status);
-        if (response.status == 201) {
-          await AsyncStorage.setItem("authToken", JSON.stringify(true));
-          router.push("/(auth)/email-verify");
-        }
-      })
-      .catch((error) => {
-        console.error("Login failed:", error);
-      });
-
-    if (!form.name || !form.email || !form.password) {
-      ToastAndroid.show(
-        "Name, Email or Password can not be empty!",
-        ToastAndroid.SHORT
-      );
-      return;
-    }
-
-    if (!validateEmail(form.email)) {
-      ToastAndroid.show("Email should be valid!", ToastAndroid.SHORT);
-      return;
-    }
-
-    if (validatePasswordStrength(form.password)) {
+      setIsLoading(false);
       return;
     }
 
@@ -137,6 +109,7 @@ const SingUp = () => {
               "OTP code sent to your email!",
               ToastAndroid.SHORT
             );
+            setIsLoading(false);
             router.push({
               pathname: "/(auth)/email-verify",
               params: { email: form.email },
@@ -160,10 +133,10 @@ const SingUp = () => {
         }
       })
       .catch((error) => {
+        setIsLoading(false);
         console.log("Sign up failed:", error);
         ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
       });
-
   };
 
   return (
@@ -210,6 +183,7 @@ const SingUp = () => {
             title="Sign Up"
             onPress={onSignUpPress}
             className="mt-2"
+            loading={isLoading}
           />
           <Link
             href="/sign-in"

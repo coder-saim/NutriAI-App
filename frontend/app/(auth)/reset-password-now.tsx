@@ -16,7 +16,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const ResetPasswordNow = () => {
-  const isLoaded = false;
+  const [isLoading, setIsLoading] = useState(false);
   const { email } = useLocalSearchParams<{ email: string }>();
 
   const [form, setForm] = useState({
@@ -25,6 +25,7 @@ const ResetPasswordNow = () => {
   });
 
   const onPressVerify = async () => {
+    setIsLoading(true);
     if (form.password === form.retype_password) {
       await axios
         .put(`${baseURL}/users/reset_password`, {
@@ -42,10 +43,14 @@ const ResetPasswordNow = () => {
           }
         })
         .catch((error) => {
+          setIsLoading(false);
           console.log("Reset password failed:", error);
           ToastAndroid.show("Reset password!", ToastAndroid.SHORT);
         });
-    } else ToastAndroid.show("Password does not match!", ToastAndroid.SHORT);
+    } else {
+      setIsLoading(false);
+      ToastAndroid.show("Password does not match!", ToastAndroid.SHORT);
+    }
   };
 
   return (
@@ -89,6 +94,7 @@ const ResetPasswordNow = () => {
             title="Reset Password"
             onPress={onPressVerify}
             className="mt-2"
+            loading={isLoading}
           />
         </View>
       </View>

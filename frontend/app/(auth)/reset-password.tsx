@@ -16,19 +16,21 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const ResetPassword = () => {
-  const isLoaded = false;
+  const [isLoading, setIsLoading] = useState(false);
 
   const [form, setForm] = useState({
     email: "",
   });
 
   const onPressVerify = async () => {
+    setIsLoading(true);
     await axios
       .post(`${baseURL}/users/email_verification`, { email: form.email })
       .then(async (response) => {
         console.log("OTP code sent successful:", response.status);
         if (response.status == 200) {
           ToastAndroid.show("OTP code sent to your email!", ToastAndroid.SHORT);
+          setIsLoading(false);
           router.push({
             pathname: "/(auth)/reset-password-verify",
             params: { email: form.email },
@@ -36,7 +38,8 @@ const ResetPassword = () => {
         }
       })
       .catch((error) => {
-        console.error("OTP code sent failed:", error);
+        setIsLoading(false)
+        console.log("OTP code sent failed:", error);
       });
   };
 
@@ -66,6 +69,7 @@ const ResetPassword = () => {
             title="Reset Password"
             onPress={onPressVerify}
             className="mt-2"
+            loading={isLoading}
           />
         </View>
       </View>
