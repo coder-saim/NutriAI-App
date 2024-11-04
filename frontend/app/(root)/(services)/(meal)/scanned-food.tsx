@@ -1,10 +1,8 @@
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, Alert, ActivityIndicator } from "react-native";
+import { View, Text, Image, TouchableOpacity, Alert, ActivityIndicator, ToastAndroid } from "react-native";
 import axios from 'axios';
 import { baseURL } from "@/constants/api";
-
-const API_URL = "http://192.168.0.199:8000/analyze-image/";
 
 const ImageScreen = () => {
   const { imageUri } = useLocalSearchParams<{ imageUri: string }>();
@@ -12,6 +10,7 @@ const ImageScreen = () => {
 
   const analyzeFood = async () => {
     setIsLoading(true);
+    ToastAndroid.show("Please wait! Your food is being analyzed.", ToastAndroid.SHORT);
     try {
 
       const formData = new FormData();
@@ -44,7 +43,7 @@ const ImageScreen = () => {
       }
 
     } catch (error) {
-      console.error('Error analyzing food:', error);
+      console.log('Error analyzing food:', error);
       Alert.alert(
         "Error",
         "Failed to analyze the food image. Please try again.",
@@ -61,7 +60,7 @@ const ImageScreen = () => {
       <TouchableOpacity
         onPress={analyzeFood}
         disabled={isLoading}
-        className={`bg-[#159339] py-3 my-8 mx-4 rounded-full items-center ${isLoading ? 'opacity-50' : ''}`}>
+        className={`bg-[#159339] py-3 my-8 mx-4 rounded-full items-center`}>
         {isLoading ? (
           <ActivityIndicator color="white" />
         ) : (
