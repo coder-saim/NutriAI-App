@@ -6,7 +6,7 @@ const Layout = () => {
       <Stack.Screen name="(meal)" options={{ headerShown: false }} />
       <Stack.Screen
         name="blood-suger"
-        options={{ headerShown: true, title: "Blood Sugar" }}
+        options={{ headerShown: true, title: "Blood Glucose" }}
       />
       <Stack.Screen
         name="tracking-activity"

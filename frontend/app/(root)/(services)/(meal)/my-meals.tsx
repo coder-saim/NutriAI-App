@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
-import { images } from "@/constants";
 import { Meal } from "@/types/type";
 
 const initialMealData: { [key: string]: Meal[] } = {
