@@ -20,6 +20,7 @@ import axios from "axios";
 import { baseURL } from "@/constants/api";
 
 const SignIn = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const showToast = () => {
     ToastAndroid.show("Comming Soon!", ToastAndroid.SHORT);
   };
@@ -31,6 +32,7 @@ const SignIn = () => {
 
 
   const onSignInPress = async () => {
+    setIsLoading(true);
     if (!form.username || !form.password) {
       ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
       return;
@@ -44,11 +46,13 @@ const SignIn = () => {
             "authToken",
             JSON.stringify(form.username)
           );
+          setIsLoading(false);
           ToastAndroid.show("Sign In successful!", ToastAndroid.SHORT);
           router.replace("/(root)/(tabs)/home");
         }
       })
       .catch((error) => {
+        setIsLoading(false);
         console.log("Login failed:", error);
         ToastAndroid.show("Invalid credentials!", ToastAndroid.SHORT);
       });
@@ -105,16 +109,10 @@ const SignIn = () => {
             title="Sign In"
             onPress={onSignInPress}
             className="mt-2"
+            loading={isLoading}
           />
 
           <View className=" mt-2 mx-2">
-            {/* <View className="flex-row items-center mb-2">
-              <TouchableOpacity className="mr-2">
-                <View className="h-4 w-4 border border-gray-400 rounded"></View>
-              </TouchableOpacity>
-              <Text className="text-gray-600">Remember me</Text>
-            </View> */}
-
             <TouchableOpacity
               onPress={() => router.push("/(auth)/reset-password")}
             >
