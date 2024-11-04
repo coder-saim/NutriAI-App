@@ -68,7 +68,7 @@ const HomeScreen = () => {
         >
           <FontAwesome5 name="heartbeat" size={26} color="green" />
           <Text className="mt-2 text-sm font-semibold text-black">
-            Blood Sugar
+            Blood Glucose
           </Text>
         </TouchableOpacity>
       </View>

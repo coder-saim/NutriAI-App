@@ -1,59 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
-import { images } from "@/constants";
 import { Meal } from "@/types/type";
 
-const mealData: { [key: string]: Meal[] } = {
-  Breakfast: [
-    {
-      name: "Oatmeal",
-      protein: "15g",
-      calories: "180g",
-      fat: "8g",
-      carbs: "30g",
-    },
-    {
-      name: "Egg Toast",
-      protein: "20g",
-      calories: "250g",
-      fat: "10g",
-      carbs: "45g",
-    },
-  ],
-  Lunch: [
-    {
-      name: "Rice & Chicken",
-      protein: "35g",
-      calories: "320g",
-      fat: "12g",
-      carbs: "60g",
-    },
-  ],
-  Dinner: [
-    {
-      name: "Grilled Fish",
-      protein: "40g",
-      calories: "280g",
-      fat: "15g",
-      carbs: "20g",
-    },
-  ],
-  Snacks: [
-    {
-      name: "Fruit Salad",
-      protein: "5g",
-      calories: "120g",
-      fat: "2g",
-      carbs: "35g",
-    },
-  ],
+const initialMealData: { [key: string]: Meal[] } = {
+  Breakfast: [],
+  Lunch: [],
+  Dinner: [],
+  Snacks: [],
 };
 
 const MyMealsPage = () => {
-  let { mealType = "Breakfast" } = useLocalSearchParams<{ mealType: string }>();
+  const { mealType = "Breakfast", mealData, imageUri } = useLocalSearchParams<{ mealType: string; mealData: string; imageUri: string }>();
   const [meal_type, setMeal_Type] = useState(mealType);
-  const selectedMeals = mealData[meal_type] || [];
+  const [meals, setMeals] = useState(initialMealData);
+
+  useEffect(() => {
+    if (mealData) {
+      const newMeal = JSON.parse(mealData);
+      newMeal.image = imageUri;
+
+      setMeals((prevMeals) => ({
+        ...prevMeals,
+        [mealType]: [...prevMeals[mealType], newMeal],
+      }));
+    }
+  }, [mealData, imageUri, mealType]);
+
+  const selectedMeals = meals[meal_type] || [];
 
   return (
     <ScrollView className="flex-1 bg-white p-4">
@@ -86,25 +60,25 @@ const MyMealsPage = () => {
       </View>
 
       {selectedMeals.length > 0 ? (
-        selectedMeals.map((meal: any, index: number) => (
+        selectedMeals.map((meal: Meal, index: number) => (
           <View
             key={index}
             className="flex-row justify-between items-center bg-green-100 rounded-lg p-4 mb-4"
           >
-            <Image source={images.meal} className="w-16 h-16 rounded-full" />
+            <Image source={{ uri: meal.image }} className="w-16 h-16 rounded-full" />
 
             <View className="flex-1 ml-4">
               <Text className="text-lg font-bold">{meal.name}</Text>
               <View className="flex-row justify-between mt-2">
                 <View>
-                  <Text className="text-gray-500">Protein: {meal.protein}</Text>
+                  <Text className="text-gray-500">Protein: {meal.protein}g</Text>
                   <Text className="text-gray-500">
-                    Calories: {meal.calories}
+                    Calories: {meal.calories} Cal
                   </Text>
                 </View>
                 <View>
-                  <Text className="text-gray-500">Fat: {meal.fat}</Text>
-                  <Text className="text-gray-500">Carbs: {meal.carbs}</Text>
+                  <Text className="text-gray-500">Fat: {meal.fat}g</Text>
+                  <Text className="text-gray-500">Carbs: {meal.carbs}g</Text>
                 </View>
               </View>
             </View>

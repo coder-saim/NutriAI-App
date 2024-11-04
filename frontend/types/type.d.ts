@@ -48,4 +48,5 @@ declare interface Meal {
   calories: string;
   fat: string;
   carbs: string;
+  image: string | null;
 };

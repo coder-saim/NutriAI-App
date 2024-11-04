@@ -8,15 +8,34 @@ const AnalyzedFoodScreen = () => {
 
   const food = foodData?.data?.items?.[0]?.food?.[0]?.food_info;
 
-  // Utility function to format numbers
+
+  
   const formatNumber = (num: any) => {
+
     return num % 1 === 0 ? num.toString() : num.toFixed(2).replace(/\.?0+$/, '');
   };
 
-  const calorie = formatNumber(food?.nutrition?.calories_100g || 0);
+  const calories = formatNumber(food?.nutrition?.calories_100g || 0);
   const protein = formatNumber(food?.nutrition?.proteins_100g || 0);
   const fat = formatNumber(food?.nutrition?.fat_100g || 0);
   const carbs = formatNumber(food?.nutrition?.carbs_100g || 0);
+
+  const finalData = {
+    name: food?.display_name,
+    calories,
+    protein,
+    fat,
+    carbs,
+  };
+
+  const mealData = JSON.stringify(finalData);
+  
+  const handleAddToMeal = () => {
+    router.push({
+      pathname: "/(meal)/add-food",
+      params: { mealData, imageUri },
+    });
+  };
 
   return (
     <View className="flex-1 bg-white">
@@ -35,7 +54,7 @@ const AnalyzedFoodScreen = () => {
             <View className="items-center">
               <Text className="text-lg font-bold text-gray-800">Calories</Text>
               <Text className="text-xl font-semibold text-green-600">
-                {calorie} Cal
+                {calories} Cal
               </Text>
             </View>
             <View className="items-center">
@@ -62,13 +81,13 @@ const AnalyzedFoodScreen = () => {
 
       <View className="p-4">
         <TouchableOpacity
-          onPress={() => router.push("/(meal)/add-food")}
+          onPress={handleAddToMeal}
           className="bg-[#159339] py-3 my-2 px-6 rounded-full items-center"
         >
           <Text className="text-white text-lg font-bold">Add to meal</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => router.push("/(meal)/suggested-meals")}
+          onPress={handleAddToMeal}
           className="bg-[#159339] py-3 px-6 mb-8 rounded-full items-center"
         >
           <Text className="text-white text-lg font-bold">Suggested meal</Text>
