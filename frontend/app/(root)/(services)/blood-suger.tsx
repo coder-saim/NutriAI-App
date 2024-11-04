@@ -45,7 +45,7 @@ export default function GlucoseMeterConnected() {
           className="border border-gray-300 rounded-md px-4 py-2 text-black"
         />
         <TouchableOpacity
-          className="flex-row items-center justify-center bg-blue-600 rounded-full py-3 mt-4"
+          className="flex-row items-center justify-center bg-[#159339] rounded-full py-3 mt-4"
           onPress={handleManualSubmit}
         >
           <Text className="text-white font-semibold text-lg mr-2">
