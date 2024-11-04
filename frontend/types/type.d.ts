@@ -8,6 +8,7 @@ declare interface ButtonProps extends TouchableOpacityProps {
   IconLeft?: React.ComponentType<any>;
   IconRight?: React.ComponentType<any>;
   className?: string;
+  loading?: boolean;
 }
 
 
@@ -37,6 +38,7 @@ declare interface OtpVerificationProps {
   onVerify: (otp: number) => void; 
   otpLength?: number; 
   timerDuration?: number; 
+  loading?: boolean;
 }
 
 
