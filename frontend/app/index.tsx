@@ -26,7 +26,7 @@ const Homepage = () => {
   }
 
   
-  return authToken ? (
+  return false ? (
     <Redirect href="/(root)/(tabs)/home" />
   ) : (
     <Redirect href="/(auth)/welcome" />

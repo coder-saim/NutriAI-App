@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, StatusBar } from "react-native";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { router } from "expo-router";
 
 const HomeScreen = () => {
   return (
-    <View className="flex-1 bg-gray-100 px-4 py-6">
+    <View className="flex-1 bg-white px-4 py-6">
       <View className="flex-row justify-between items-center">
         <Text className="text-2xl mt-4 font-semibold text-green-700">
           Hello John,
@@ -15,10 +15,16 @@ const HomeScreen = () => {
         Find, track and eat healthy food.
       </Text>
 
+      <StatusBar
+        backgroundColor="white" // Background color for Android
+        barStyle="dark-content" // Light-content for iOS and Android
+        hidden={false} // Show or hide the status bar
+      />
+
       <View className="bg-green-50 rounded-lg p-4 mb-6">
         <View className="flex-row justify-between items-center">
           <Text className="text-sm text-green-700 font-semibold">
-            Sugar Level
+            Glucose Level
           </Text>
           <Text className="text-sm text-green-700">6.5 Normal</Text>
         </View>
@@ -47,7 +53,10 @@ const HomeScreen = () => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push("/(services)/tracking-activity")} className="p-4 items-center">
+        <TouchableOpacity
+          onPress={() => router.push("/(services)/tracking-activity")}
+          className="p-4 items-center"
+        >
           <FontAwesome5 name="running" size={26} color="green" />
           <Text className="mt-2 text-sm font-semibold text-black">
             Tracking Activity
@@ -55,7 +64,10 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <View className="flex flex-row justify-around bg-green-50 rounded-lg ">
-        <TouchableOpacity onPress={() => router.push("/(meal)/my-meals")} className="p-4 items-center">
+        <TouchableOpacity
+          onPress={() => router.push("/(meal)/my-meals")}
+          className="p-4 items-center"
+        >
           <FontAwesome5 name="utensils" size={26} color="green" />
           <Text className="mt-2 text-sm font-semibold text-black">
             Meal Planner
