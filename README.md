@@ -1,4 +1,4 @@
-![Logo](/resources/NutriAICoverpage.png)
+![Logo](/resources/NutriAICoverPage.png)
 
 > A Project developed based on Expo CLI
 
@@ -39,7 +39,7 @@
 
 ## **Environment Variables**
 
-Make sure to add your postgresql database informaton correctly to run the app in development environment
+Make sure to add your Postgresql database information correctly to run the app in a development environment
 
 ## **License**
 
