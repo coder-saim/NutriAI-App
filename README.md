@@ -13,6 +13,18 @@
 [NutriAI.apk]()
 
 
+
+## **Screenshots of the App**
+![Logo](/resources/1.png)
+![Logo](/resources/2.png)
+![Logo](/resources/3.png)
+![Logo](/resources/4.png)
+![Logo](/resources/5.png)
+![Logo](/resources/6.png)
+![Logo](/resources/7.png)
+
+
+
 ## **Platform & Technology**
 
 | **Frontend** |     | **Backend**  |
