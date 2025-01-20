@@ -20,7 +20,7 @@
 | ReactNative          |     | FastAPI         |
 
 
-**Data Base:**
+## **Data Base:**
 
 - PostgreSQL
 
